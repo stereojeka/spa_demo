@@ -1,20 +1,18 @@
-var app = angular.module("mainApp", ['ngRoute']);
+var app = angular.module('DemoApp', ['ui.router']);
 
-app.config(function($routeProvider){
+app.config(function ($stateProvider, $urlRouterProvider) {
+	
+  $stateProvider
+    .state('home', {
+      url: '/home',
+      templateUrl: 'pages/home.html'
+    })
+    .state('login', {
+      url: '/login',
+      templateUrl: 'pages/login.html'
+    });
+  $urlRouterProvider.otherwise('/login');
 
-	$routeProvider
-	.when('/', {
-		temlplateUrl: 'pages/login.html'
-	})
-	.when('/login', {
-		temlplateUrl: 'pages/login.html'
-	})
-	.when('/home', {
-		temlplateUrl: 'pages/home.html'
-	})
-	.otherwise({
-		redirectTo: 'pages/login.html'
-	});
 });
 
 app.controller('loginController', function($scope, $location){
