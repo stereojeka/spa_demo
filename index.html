@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>APP</title>
+	<title>Document</title>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
+	<script src="app/app.js"></script>
 </head>
-<body>
-  Done!
+<body ng-app="mainApp">
+	
+	<div ng-view></div>
+
+	
 </body>
 </html>
