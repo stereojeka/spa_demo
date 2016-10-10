@@ -1,17 +1,20 @@
 var app = angular.module('mainApp', ['ui.router']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
-
   $stateProvider
     .state('home', {
       url: '/home',
-      templateUrl: 'home.html',
+      templateUrl: 'partials/home.tpl.html'
+    })
+    .state('secret', {
+      url: '/secret',
+      templateUrl: 'partials/secret.tpl.html',
     })
     .state('login', {
       url: '/login',
-      templateUrl: 'login.html',
+      templateUrl: 'partials/login.tpl.html'
     });
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/home');
 
 });
 /*
