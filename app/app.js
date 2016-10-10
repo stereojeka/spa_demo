@@ -5,11 +5,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('home', {
       url: '/home',
-      templateUrl: 'home.html'
+      templateUrl: 'home.html',
     })
     .state('login', {
       url: '/login',
-      templateUrl: 'login.html'
+      templateUrl: 'login.html',
     });
   $urlRouterProvider.otherwise('/login');
 
