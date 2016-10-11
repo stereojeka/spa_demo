@@ -23,13 +23,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	})
 	.state('profile', {
 		url: '/profile',
-		resolve: {
-			"check": function($location, $rootScope){
-				if(!$rootScope.loggedIn){
-					$location.path('/');
-				} 
-			}
-		},
 		templateUrl: 'partials/profile.tpl.html'
 	})
 	.state('secret', {
