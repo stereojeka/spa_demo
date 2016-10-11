@@ -17,7 +17,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise('/home');
 
 });
-/*
+
 app.controller('loginController', function($scope, $location){
 	$scope.submit = function(){
 		if($scope.username == 'admin' && $scope.password == 'admin'){
@@ -25,5 +25,3 @@ app.controller('loginController', function($scope, $location){
 		}
 	};
 });
-
-*/
