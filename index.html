@@ -14,10 +14,10 @@
 </head>
 <body ng-app="mainApp">
 	<div class="container topMenu">
-		<a href="/#/">Home</a>
-		<a href="/#/login">Login</a>
-		<a ng-if="isAuthenticated()" href="/#/profile">Profile</a>
-    	<a ng-if="isAuthenticated()" href="/#/logout">Logout</a>
+		<a href="/spa_demo/#/home">Home</a>
+		<a href="/spa_demo/#/login">Login</a>
+		<a ng-if="isAuthenticated()" href="/spa_demo/#/profile">Profile</a>
+    	<a ng-if="isAuthenticated()" href="/spa_demo/#/logout">Logout</a>
 	</div>
 	<div ui-view></div>
 
