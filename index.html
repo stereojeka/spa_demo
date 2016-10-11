@@ -16,8 +16,12 @@
 	<div class="container topMenu">
 		<a href="/spa_demo/#/home">Home</a>
 		<a href="/spa_demo/#/login">Login</a>
-		<a ng-if="isAuthenticated()" href="/spa_demo/#/profile">Profile</a>
-    	<a ng-if="isAuthenticated()" href="/spa_demo/#/logout">Logout</a>
+		<ul ng-if="isAuthenticated()">
+    		<li><a href="/spa_demo/#/profile">Profile</a></li>
+  		</ul>
+    	<ul ng-if="isAuthenticated()">
+    		<li><a href="/spa_demo/#/logout">Logout</a></li>
+  		</ul>
 	</div>
 	<div ui-view></div>
 
