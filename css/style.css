@@ -17,3 +17,11 @@
 .topMenu a:hover {
 	color: yellow;
 }
+
+.topMenu a:active {
+	color: #fff;
+}
+
+.topMenu a:visited {
+	color: #fff;
+}

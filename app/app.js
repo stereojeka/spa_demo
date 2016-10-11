@@ -1,6 +1,10 @@
-var app = angular.module('mainApp', ['ui.router']);
+var app = angular.module('mainApp', ['ui.router', 'satellizer']);
 
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
+	$authProvider.facebook({
+      clientId: '1336322916420295',
+    });
+
 	$stateProvider
 	.state('home', {
 		url: '/home',
@@ -42,4 +46,12 @@ app.controller('loginController', function($scope, $location, $rootScope){
 			alert('Wrong stuff!');
 		}
 	};
+});
+
+app.controller('authController', function($scope, $auth){
+
+	$scope.authenticate = function(provider) {
+      $auth.authenticate(provider);
+    };
+
 });
