@@ -25,3 +25,8 @@
 .topMenu a:visited {
 	color: #fff;
 }
+
+button.fa-auth {
+	color: #fff;
+    background-color: #294786;
+}
