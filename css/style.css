@@ -1,8 +1,13 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: #e4e7ec;
+}
+
 .topMenu {
 	box-sizing: border-box;
 	width: 100%;
 	height: 50px;
-	background-color: #345;
+	background-color: #12a563;
 	padding-top: 12px;
 }
 
@@ -14,15 +19,20 @@
 	padding: 0 10px;
 }
 
-.topMenu a:hover {
-	color: yellow;
-}
-
-.topMenu a:active {
+.topMenu a:link {
 	color: #fff;
+	text-decoration: none;
 }
 
 .topMenu a:visited {
+	color: #fff;
+}
+
+.topMenu a:hover {
+	color: #fff;
+}
+
+.topMenu a:active {
 	color: #fff;
 }
 

@@ -7,7 +7,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		name: 'facebook',
 		url: '/auth/facebook',
 		authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-		redirectUri: window.location.origin + '/spa_demo/',
+		redirectUri: window.location.origin + '/spa_demo/#/',
 		requiredUrlParams: ['display', 'scope'],
 		scope: ['email'],
 		scopeDelimiter: ',',
@@ -19,33 +19,49 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	$stateProvider
 	.state('home', {
 		url: '/home',
-		resolve: {
-			"check": function($location, $rootScope){
-				if(!$rootScope.loggedIn){
-					$location.path('/');
-				}
-			}
-		},
 		templateUrl: 'partials/home.tpl.html'
 	})
-	.state('secret', {
-		url: '/secret',
+	.state('logout', {
+        url: '/logout',
+        template: null,
+        controller: 'LogoutCtrl'
+    })
+	.state('profile', {
+		url: '/profile',
 		resolve: {
-			"check": function($location, $rootScope){
-				if(!$rootScope.loggedIn){
-					$location.path('/');
-				} 
-			}
+			skipIfLoggedIn: skipIfLoggedIn
 		},
-		templateUrl: 'partials/secret.tpl.html'
+		templateUrl: 'partials/profile.tpl.html'
 	})
 	.state('login', {
 		url: '/login',
 		templateUrl: 'partials/login.tpl.html'
 	});
-	$urlRouterProvider.otherwise('/login');
+	$urlRouterProvider.otherwise('/home');
+
+	function skipIfLoggedIn($q, $auth) {
+		var deferred = $q.defer();
+		if ($auth.isAuthenticated()) {
+			deferred.reject();
+		} else {
+			deferred.resolve();
+		}
+		return deferred.promise;
+	}
+
+	function loginRequired($q, $location, $auth) {
+		var deferred = $q.defer();
+		if ($auth.isAuthenticated()) {
+			deferred.resolve();
+		} else {
+			$location.path('/login');
+		}
+		return deferred.promise;
+	}
 
 });
+
+
 
 app.controller('loginController', function($scope, $location, $rootScope){
 	$scope.submit = function(){

@@ -14,9 +14,10 @@
 </head>
 <body ng-app="mainApp">
 	<div class="container topMenu">
-		<a ui-sref="home">Home</a>
-		<a ui-sref="login">Login</a>
-		<a ui-sref="secret">Secret</a>
+		<a href="/#/">Home</a>
+		<a href="/#/login">Login</a>
+		<a ng-if="isAuthenticated()" href="/#/profile">Profile</a>
+    	<a ng-if="isAuthenticated()" href="/#/logout">Logout</a>
 	</div>
 	<div ui-view></div>
 
