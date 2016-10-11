@@ -7,7 +7,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		name: 'facebook',
 		url: '/auth/facebook',
 		authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-		redirectUri: window.location.origin + '/',
+		redirectUri: window.location.origin + '/spa_demo/',
 		requiredUrlParams: ['display', 'scope'],
 		scope: ['email'],
 		scopeDelimiter: ',',
