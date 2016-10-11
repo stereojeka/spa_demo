@@ -4,17 +4,19 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 	<script src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
 	<script src="js/angular-ui-router.js"></script>
 	<script src="app/app.js"></script>
 </head>
 <body ng-app="mainApp">
-	<header class="container topMenu">
+	<div class="container topMenu">
 		<a ui-sref="home">Home</a>
 		<a ui-sref="login">Login</a>
 		<a ui-sref="secret">Secret</a>
-	</header>
+	</div>
 	<div ui-view></div>
 
 </body>

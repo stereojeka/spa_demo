@@ -1,4 +1,4 @@
-
+<!--
 <div ng-controller="loginController">
 	<form action="/" id="myLogin">
 		Username: <input type="text" id="username" ng-model="username"> <br>
@@ -7,3 +7,23 @@
 	</form>
 </div>
 
+-->
+ 
+<div class="container" ng-controller="loginController">
+<form class="form-signin" action="/" id="form-signin">
+		<h2 class="form-signin-heading">Please sign in</h2>
+		<div class="control-group">
+			<label class="control-label" for="login">Login:</label>
+			<div class="controls">
+				<input size="50" id="login" value="" type="text" class="form-control" placeholder="Login" ng-model="username">
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="password">Password:</label>
+			<div class="controls">
+				<input size="50" id="password" value="" type="password" class="form-control" placeholder="Password" ng-model="password">
+			</div>
+		</div>
+		<button  name="submit" id="submit" value="" type="submit" class="btn btn-large btn-primary btn-block" ng-click="submit()">Sign in</button>
+	</form>
+</div>

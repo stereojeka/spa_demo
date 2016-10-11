@@ -22,6 +22,8 @@ app.controller('loginController', function($scope, $location){
 	$scope.submit = function(){
 		if($scope.username == 'admin' && $scope.password == 'admin'){
 			$location.path('/home');
+		} else {
+			alert('Wrong stuff!');
 		}
 	};
 });
