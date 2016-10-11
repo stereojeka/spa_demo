@@ -29,7 +29,11 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	.state('profile', {
 		url: '/profile',
 		resolve: {
-			skipIfLoggedIn: skipIfLoggedIn
+			"check": function($location, $rootScope){
+ -				if(!$rootScope.loggedIn){
+ -					$location.path('/');
+ -				}
+ -			}
 		},
 		templateUrl: 'partials/profile.tpl.html'
 	})
@@ -38,27 +42,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		templateUrl: 'partials/login.tpl.html'
 	});
 	$urlRouterProvider.otherwise('/home');
-
-	function skipIfLoggedIn($q, $auth) {
-		var deferred = $q.defer();
-		if ($auth.isAuthenticated()) {
-			deferred.reject();
-		} else {
-			deferred.resolve();
-		}
-		return deferred.promise;
-	}
-
-	function loginRequired($q, $location, $auth) {
-		var deferred = $q.defer();
-		if ($auth.isAuthenticated()) {
-			deferred.resolve();
-		} else {
-			$location.path('/login');
-		}
-		return deferred.promise;
-	}
-
+	
 });
 
 
