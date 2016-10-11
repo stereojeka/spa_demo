@@ -3,6 +3,7 @@ var app = angular.module('mainApp', ['ui.router', 'satellizer']);
 app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	$authProvider.facebook({
 		clientId: '1336322916420295',
+		responseType: 'token',
 		name: 'facebook',
 		url: '/auth/facebook',
 		authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
