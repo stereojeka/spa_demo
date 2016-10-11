@@ -7,7 +7,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		name: 'facebook',
 		url: '/auth/facebook',
 		authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-		redirectUri: window.location.origin + '/spa_demo/#/',
+		redirectUri: window.location.origin + '/spa_demo/',
 		requiredUrlParams: ['display', 'scope'],
 		scope: ['email'],
 		scopeDelimiter: ',',
@@ -21,31 +21,35 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		url: '/home',
 		templateUrl: 'partials/home.tpl.html'
 	})
-	.state('logout', {
-        url: '/logout',
-        template: null,
-        controller: 'LogoutCtrl'
-    })
 	.state('profile', {
 		url: '/profile',
 		resolve: {
 			"check": function($location, $rootScope){
- -				if(!$rootScope.loggedIn){
- -					$location.path('/');
- -				}
- -			}
+				if(!$rootScope.loggedIn){
+					$location.path('/');
+				} 
+			}
 		},
 		templateUrl: 'partials/profile.tpl.html'
+	})
+	.state('secret', {
+		url: '/secret',
+		resolve: {
+			"check": function($location, $rootScope){
+				if(!$rootScope.loggedIn){
+					$location.path('/');
+				} 
+			}
+		},
+		templateUrl: 'partials/secret.tpl.html'
 	})
 	.state('login', {
 		url: '/login',
 		templateUrl: 'partials/login.tpl.html'
 	});
-	$urlRouterProvider.otherwise('/home');
-	
+	$urlRouterProvider.otherwise('/login');
+
 });
-
-
 
 app.controller('loginController', function($scope, $location, $rootScope){
 	$scope.submit = function(){
