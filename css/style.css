@@ -40,3 +40,7 @@ button.fa-auth {
 	color: #fff;
     background-color: #294786;
 }
+
+.goHide {
+	display: none;
+}

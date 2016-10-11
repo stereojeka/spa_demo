@@ -66,7 +66,19 @@ app.controller('loginController', function($scope, $location, $rootScope){
 app.controller('authController', function($scope, $auth){
 
 	$scope.authenticate = function(provider) {
-		$auth.authenticate(provider);
-	};
+      $auth.authenticate(provider)
+        .then(function() {
+          $location.path('/profile');
+        })
+        .catch(function(error) {
+          if (error.error) {
+            console.log(error.error);
+          } else if (error.data) {
+            console.log(error.data.message, error.status);
+          } else {
+            console.log(error);
+          }
+        });
+    };
 
 });
