@@ -56,7 +56,7 @@ app.controller('loginController', function($scope, $location, $rootScope){
 	};
 });
 
-app.controller('authController', function($scope, $auth){
+app.controller('authController', function($scope, $auth, $location){
 
 	$scope.authenticate = function(provider) {
       $auth.authenticate(provider)
