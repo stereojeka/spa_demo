@@ -33,21 +33,15 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		},
 		*/
 		templateUrl: 'partials/profile.tpl.html',
-		resolve: {
-			//loginRequired: loginRequired
-			"check": function($location, $rootScope){
-				if(!$rootScope.loggedIn){
-					$location.path('/');
-				} 
-			}
-		}
 	})
 	.state('login', {
 		url: '/login',
-		templateUrl: 'partials/login.tpl.html',
+		templateUrl: 'partials/login.tpl.html'
+		/*
 		resolve: {
 			skipIfLoggedIn: skipIfLoggedIn
 		}
+		*/
 	});
 	$urlRouterProvider.otherwise('/home');
 
@@ -78,14 +72,14 @@ app.controller('loginController', function($scope, $location, $rootScope){
 
 		if($scope.username == 'admin' && $scope.password == 'admin'){
 			$rootScope.loggedIn = true;
-			$location.path('/home');
+			$location.path('/profile');
 		} else {
 			alert('Wrong stuff!');
 		}
 	};
 });
 
-app.controller('authController', function($scope, $auth, $location, $rootScope){
+app.controller('authController', function($scope, $auth, $location){
 
 	$scope.authenticate = function(provider) {
 		$auth.authenticate(provider)
@@ -105,7 +99,7 @@ app.controller('authController', function($scope, $auth, $location, $rootScope){
 
 });
 
-app.controller('menuController', function($scope, $auth, $rootScope, $location) {
+app.controller('menuController', function($scope, $auth) {
 	$scope.isAuthenticated = function() {
 		return $auth.isAuthenticated();
 	};
