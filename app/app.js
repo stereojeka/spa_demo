@@ -109,7 +109,7 @@ app.controller('menuController', function($scope, $auth, $rootScope, $location) 
 		if (!$auth.isAuthenticated()) { return; }
 		$auth.logout()
 		.then(function() {
-			$location.path('/login');
+			$location.path('/');
 		});
 	};
 });
