@@ -124,7 +124,7 @@ app.controller('LogoutCtrl', function($location, $auth) {
 	});
 });
 
-app.controller('ProfileCtrl', function($scope, $auth, Account) {
+app.controller('ProfileCtrl', function($scope, $auth, Account, $window) {
 	$scope.getProfile = function() {
 		Account.getProfile()
 		.then(function(response) {
@@ -165,15 +165,46 @@ app.controller('ProfileCtrl', function($scope, $auth, Account) {
 	};
 
 	$scope.getProfile();
+
+	$window.fbAsyncInit = function() {
+		FB.init({ 
+			appId: '1336322916420295',
+			status: true, 
+			cookie: true, 
+			xfbml: true,
+			version: 'v2.8'
+		});
+	};
+
+	$scope.getMyLastName = function() {
+		facebookService.getMyLastName() 
+		.then(function(response) {
+			$scope.last_name = response.last_name;
+		}
+		);
+	};
 });
 
-app.factory('Account', function($http) {
+app.factory('Account', function($http, $q) {
 	return {
 		getProfile: function() {
 			return $http.get('https://graph.facebook.com/me');
 		},
 		updateProfile: function(profileData) {
 			return $http.put('https://graph.facebook.com/me', profileData);
+		}
+		getMyLastName: function() {
+			var deferred = $q.defer();
+			FB.api('/me', {
+				fields: 'last_name'
+			}, function(response) {
+				if (!response || response.error) {
+					deferred.reject('Error occured');
+				} else {
+					deferred.resolve(response);
+				}
+			});
+			return deferred.promise;
 		}
 	};
 });
