@@ -170,10 +170,10 @@ app.controller('ProfileCtrl', function($scope, $auth, Account) {
 app.factory('Account', function($http) {
 	return {
 		getProfile: function() {
-			return $http.get('/spa_demo/api/me');
+			return $http.get('https://graph.facebook.com/v2.8/me');
 		},
 		updateProfile: function(profileData) {
-			return $http.put('/spa_demo/api/me', profileData);
+			return $http.put('https://graph.facebook.com/v2.8/me', profileData);
 		}
 	};
 });
