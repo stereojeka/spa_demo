@@ -82,15 +82,15 @@ app.controller('loginController', function($scope, $location, $rootScope){
 app.controller('authController', function($scope, $auth, $location){
 
 	$scope.login = function() {
-      $auth.login($scope.user)
-        .then(function() {
-          alert('You have successfully signed in!');
-          $location.path('/profile');
-        })
-        .catch(function(error) {
-          console.log(error.data.message, error.status);
-        });
-    };
+		$auth.login($scope.user)
+		.then(function() {
+			alert('You have successfully signed in!');
+			$location.path('/profile');
+		})
+		.catch(function(error) {
+			console.log(error.data.message, error.status);
+		});
+	};
 
 	$scope.authenticate = function(provider) {
 		$auth.authenticate(provider)
@@ -123,4 +123,47 @@ app.controller('LogoutCtrl', function($location, $auth) {
 	.then(function() {
 		$location.path('/');
 	});
+});
+
+app.controller('ProfileCtrl', function($scope, $auth, Account) {
+	$scope.getProfile = function() {
+		Account.getProfile()
+		.then(function(response) {
+			$scope.user = response.data;
+		})
+		.catch(function(response) {
+			console.log(response.data.message, response.status);
+		});
+	};
+	$scope.updateProfile = function() {
+		Account.updateProfile($scope.user)
+		.then(function() {
+			console.log('Profile has been updated');
+		})
+		.catch(function(response) {
+			console.log(response.data.message, response.status);
+		});
+	};
+	$scope.link = function(provider) {
+		$auth.link(provider)
+		.then(function() {
+			console.log('You have successfully linked a ' + provider + ' account');
+			$scope.getProfile();
+		})
+		.catch(function(response) {
+			console.log(response.data.message, response.status);
+		});
+	};
+	$scope.unlink = function(provider) {
+		$auth.unlink(provider)
+		.then(function() {
+			console.log('You have unlinked a ' + provider + ' account');
+			$scope.getProfile();
+		})
+		.catch(function(response) {
+			console.log(response.data ? response.data.message : 'Could not unlink ' + provider + ' account', response.status);
+		});
+	};
+
+	$scope.getProfile();
 });
