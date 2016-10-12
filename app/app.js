@@ -86,8 +86,17 @@ app.controller('authController', function($scope, $auth, $location, $rootScope){
 
 });
 
-app.controller('menuController', function($scope, $auth) {
+app.controller('menuController', function($scope, $auth, $rootScope) {
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
+
+    $scope.checkLogin = function(){
+    	if ($rootScope.loggedIn) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    };
+
   });
