@@ -166,16 +166,6 @@ app.controller('ProfileCtrl', function($scope, $auth, Account, $window) {
 
 	$scope.getProfile();
 
-	$window.fbAsyncInit = function() {
-		FB.init({ 
-			appId: '1336322916420295',
-			status: true, 
-			cookie: true, 
-			xfbml: true,
-			version: 'v2.8'
-		});
-	};
-
 	$scope.getMyLastName = function() {
 		facebookService.getMyLastName() 
 		.then(function(response) {
@@ -192,7 +182,7 @@ app.factory('Account', function($http, $q) {
 		},
 		updateProfile: function(profileData) {
 			return $http.put('https://graph.facebook.com/me', profileData);
-		}
+		},
 		getMyLastName: function() {
 			var deferred = $q.defer();
 			FB.api('/me', {
