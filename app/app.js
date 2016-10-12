@@ -34,37 +34,37 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		*/
 		templateUrl: 'partials/profile.tpl.html',
 		resolve: {
-          loginRequired: loginRequired
-        }
+			loginRequired: loginRequired
+		}
 	})
 	.state('login', {
 		url: '/login',
 		templateUrl: 'partials/login.tpl.html',
 		resolve: {
-          skipIfLoggedIn: skipIfLoggedIn
-        }
+			skipIfLoggedIn: skipIfLoggedIn
+		}
 	});
 	$urlRouterProvider.otherwise('/home');
 
 	function skipIfLoggedIn($q, $auth) {
-      var deferred = $q.defer();
-      if ($auth.isAuthenticated()) {
-        deferred.reject();
-      } else {
-        deferred.resolve();
-      }
-      return deferred.promise;
-    }
+		var deferred = $q.defer();
+		if ($auth.isAuthenticated()) {
+			deferred.reject();
+		} else {
+			deferred.resolve();
+		}
+		return deferred.promise;
+	}
 
-    function loginRequired($q, $location, $auth) {
-      var deferred = $q.defer();
-      if ($auth.isAuthenticated()) {
-        deferred.resolve();
-      } else {
-        $location.path('/login');
-      }
-      return deferred.promise;
-    }
+	function loginRequired($q, $location, $auth) {
+		var deferred = $q.defer();
+		if ($auth.isAuthenticated()) {
+			deferred.resolve();
+		} else {
+			$location.path('/login');
+		}
+		return deferred.promise;
+	}
 
 });
 
@@ -104,12 +104,14 @@ app.controller('menuController', function($scope, $auth, $rootScope, $location) 
 	$scope.isAuthenticated = function() {
 		return $auth.isAuthenticated();
 	};
+});
 
-	$scope.logOut = function(){
-		if (!$auth.isAuthenticated()) { return; }
-		$auth.logout()
-		.then(function() {
-			$location.path('/');
-		});
-	};
+
+app.controller('LogoutCtrl', function($location, $auth, toastr) {
+	if (!$auth.isAuthenticated()) { return; }
+	$auth.logout()
+	.then(function() {
+		toastr.info('You have been logged out');
+		$location.path('/');
+	});
 });
