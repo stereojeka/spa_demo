@@ -150,10 +150,10 @@ app.controller('ProfileCtrl', function($scope, $auth, Account) {
 app.factory('Account', function($http) {
 	return {
 		getProfile: function() {
-			return $http.get('graph.facebook.com/me');
+			return $http.get('https://graph.facebook.com/me');
 		},
 		updateProfile: function(profileData) {
-			return $http.put('graph.facebook.com/me', profileData);
+			return $http.put('https://graph.facebook.com/me', profileData);
 		}
 	};
 });
