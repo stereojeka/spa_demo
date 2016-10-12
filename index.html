@@ -11,14 +11,12 @@
 	<div ng-controller="menuController" class="container topMenu" >
 		<a ui-sref="home">Home</a>
 		<!--<a ui-sref="login">Login</a> -->
-		<ul style="list-style: none; display: inline-block;">
-			<li ng-if="isAuthenticated()"><a href="/spa_demo/#/profile">Profile</a></li>
-		</ul>
+		<a ng-if="isAuthenticated()" href="/spa_demo/#/profile">Profile</a>
 		<ul ng-if="!isAuthenticated()" class="pull-right" style="list-style: none; display: inline-block;">
 			<li><a href="/spa_demo/#/login">Login</a></li>
 		</ul>
-		<ul class="pull-right" style="list-style: none; display: inline-block;">
-			<li ng-if="isAuthenticated()"><a href="/spa_demo/#/logout" ng-click="logOut()">Logout</a></li>
+		<ul ng-if="isAuthenticated()" class="pull-right" style="list-style: none; display: inline-block;">
+			<li><a href="/spa_demo/#/logout" ng-click="logOut()">Logout</a></li>
 		</ul>
 	</div>
 	<div ui-view></div>

@@ -32,13 +32,39 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 			}
 		},
 		*/
-		templateUrl: 'partials/profile.tpl.html'
+		templateUrl: 'partials/profile.tpl.html',
+		resolve: {
+          loginRequired: loginRequired
+        }
 	})
 	.state('login', {
 		url: '/login',
-		templateUrl: 'partials/login.tpl.html'
+		templateUrl: 'partials/login.tpl.html',
+		resolve: {
+          skipIfLoggedIn: skipIfLoggedIn
+        }
 	});
-	$urlRouterProvider.otherwise('/login');
+	$urlRouterProvider.otherwise('/home');
+
+	function skipIfLoggedIn($q, $auth) {
+      var deferred = $q.defer();
+      if ($auth.isAuthenticated()) {
+        deferred.reject();
+      } else {
+        deferred.resolve();
+      }
+      return deferred.promise;
+    }
+
+    function loginRequired($q, $location, $auth) {
+      var deferred = $q.defer();
+      if ($auth.isAuthenticated()) {
+        deferred.resolve();
+      } else {
+        $location.path('/login');
+      }
+      return deferred.promise;
+    }
 
 });
 
@@ -83,7 +109,7 @@ app.controller('menuController', function($scope, $auth, $rootScope, $location) 
 		if (!$auth.isAuthenticated()) { return; }
 		$auth.logout()
 		.then(function() {
-			$location.path('/spa_demo');
+			$location.path('/login');
 		});
 	};
 });
