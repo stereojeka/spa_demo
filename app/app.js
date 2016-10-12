@@ -3,7 +3,7 @@ var app = angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource']);
 app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	$authProvider.facebook({
 		clientId: '1336322916420295',
-		responseType: 'token',
+		//responseType: 'token',
 		name: 'facebook',
 		url: '/auth/facebook',
 		authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
@@ -17,9 +17,19 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	});
 
 	$authProvider.google({
-      clientId: '877900933221-t16rni758d1f9blqamfppeeqm1t4abo2.apps.googleusercontent.com',
-      redirectUri: window.location.origin + '/spa_demo/profile'
-    });
+		clientId: '877900933221-t16rni758d1f9blqamfppeeqm1t4abo2.apps.googleusercontent.com',
+		url: '/auth/google',
+		authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
+		redirectUri: window.location.origin + '/spa_demo/profile',
+		requiredUrlParams: ['scope'],
+		optionalUrlParams: ['display'],
+		scope: ['profile', 'email'],
+		scopePrefix: 'openid',
+		scopeDelimiter: ' ',
+		display: 'popup',
+		oauthType: '2.0',
+		popupOptions: { width: 452, height: 633 }
+	});
 
 	$stateProvider
 	.state('home', {
