@@ -34,7 +34,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	})
 	.state('logout', {
         url: '/logout',
-        template: null,
+        template: 'partials/home.tpl.html',
         controller: 'LogoutCtrl'
       })
 	/*
@@ -110,6 +110,6 @@ app.controller('LogoutCtrl', function($location, $auth) {
     if (!$auth.isAuthenticated()) { return; }
     $auth.logout()
       .then(function() {
-        $location.path('/home');
+        $location.path('/spa_demo');
       });
   });
