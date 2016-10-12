@@ -107,11 +107,10 @@ app.controller('menuController', function($scope, $auth, $rootScope, $location) 
 });
 
 
-app.controller('LogoutCtrl', function($location, $auth, toastr) {
+app.controller('LogoutCtrl', function($location, $auth) {
 	if (!$auth.isAuthenticated()) { return; }
 	$auth.logout()
 	.then(function() {
-		toastr.info('You have been logged out');
 		$location.path('/');
 	});
 });
