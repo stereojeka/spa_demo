@@ -7,7 +7,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		name: 'facebook',
 		url: '/auth/facebook',
 		authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-		redirectUri: window.location.origin + '/spa_demo/',
+		redirectUri: window.location.origin + '/spa_demo/profile',
 		requiredUrlParams: ['display', 'scope'],
 		scope: ['email'],
 		scopeDelimiter: ',',
@@ -43,7 +43,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		}
 		*/
 	});
-	$urlRouterProvider.otherwise('/home');
+	$urlRouterProvider.otherwise('/login');
 
 	function skipIfLoggedIn($q, $auth) {
 		var deferred = $q.defer();
@@ -125,6 +125,11 @@ app.controller('LogoutCtrl', function($location, $auth) {
 });
 
 app.controller('ProfileCtrl', function($scope, $auth, Account) {
+
+	$scope.isAuthenticated = function() {
+		return $auth.isAuthenticated();
+	};
+
 	$scope.getProfile = function() {
 		Account.getProfile()
 		.then(function(response) {
