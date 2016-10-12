@@ -84,7 +84,6 @@ app.controller('authController', function($scope, $auth, $location){
 	$scope.login = function() {
 		$auth.login($scope.user)
 		.then(function() {
-			alert('You have successfully signed in!');
 			$location.path('/profile');
 		})
 		.catch(function(error) {
@@ -171,10 +170,10 @@ app.controller('ProfileCtrl', function($scope, $auth, Account) {
 app.factory('Account', function($http) {
 	return {
 		getProfile: function() {
-			return $http.get('/spa_demo/api/me');
+			return $http.get('/api/me');
 		},
 		updateProfile: function(profileData) {
-			return $http.put('/spa_demo/api/me', profileData);
+			return $http.put('/api/me', profileData);
 		}
 	};
 });

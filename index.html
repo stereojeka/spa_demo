@@ -2,7 +2,7 @@
 <html lang="en" ng-app="mainApp">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Single-Page App | Demo</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
@@ -10,7 +10,6 @@
 <body>
 	<div ng-controller="menuController" class="container topMenu" >
 		<a ui-sref="home">Home</a>
-		<!--<a ui-sref="login">Login</a> -->
 		<a ng-if="isAuthenticated()" href="/spa_demo/#/profile">Profile</a>
 		<ul ng-if="!isAuthenticated()" class="pull-right" style="list-style: none; display: inline-block;">
 			<li><a href="/spa_demo/#/login">Login</a></li>
@@ -25,6 +24,8 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 	<script src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
 	<script src="js/satellizer.min.js"></script>
+	<script src="/js/angular-resource.js"></script>
+	<script src="/js/angular-sanitize.js"></script>
 	<script src="js/angular-ui-router.js"></script>
 	<script src="app/app.js"></script>
 </body>
