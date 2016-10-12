@@ -143,26 +143,6 @@ app.controller('ProfileCtrl', function($scope, $auth, Account) {
 			console.log(response.data.message, response.status);
 		});
 	};
-	$scope.link = function(provider) {
-		$auth.link(provider)
-		.then(function() {
-			console.log('You have successfully linked a ' + provider + ' account');
-			$scope.getProfile();
-		})
-		.catch(function(response) {
-			console.log(response.data.message, response.status);
-		});
-	};
-	$scope.unlink = function(provider) {
-		$auth.unlink(provider)
-		.then(function() {
-			console.log('You have unlinked a ' + provider + ' account');
-			$scope.getProfile();
-		})
-		.catch(function(response) {
-			console.log(response.data ? response.data.message : 'Could not unlink ' + provider + ' account', response.status);
-		});
-	};
 
 	$scope.getProfile();
 });
@@ -170,10 +150,10 @@ app.controller('ProfileCtrl', function($scope, $auth, Account) {
 app.factory('Account', function($http) {
 	return {
 		getProfile: function() {
-			return $http.get('/spa_demo/api/me');
+			return $http.get('graph.facebook.com/me');
 		},
 		updateProfile: function(profileData) {
-			return $http.put('/spa_demo/api/me', profileData);
+			return $http.put('graph.facebook.com/me', profileData);
 		}
 	};
 });
