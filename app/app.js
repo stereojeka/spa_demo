@@ -69,7 +69,7 @@ app.controller('authController', function($scope, $auth, $location, $rootScope){
 
 	$scope.authenticate = function(provider, $rootScope) {
       $auth.authenticate(provider)
-        .then(function() {
+        .then(function($rootScope) {
         	$rootScope.loggedIn = true;
           $location.path('/profile');
         })
