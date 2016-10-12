@@ -17,7 +17,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	});
 
 	$authProvider.google({
-      clientId: '877900933221-t16rni758d1f9blqamfppeeqm1t4abo2.apps.googleusercontent.com'
+      clientId: '877900933221-t16rni758d1f9blqamfppeeqm1t4abo2.apps.googleusercontent.com',
+      redirectUri: window.location.origin + '/spa_demo/profile'
     });
 
 	$stateProvider
