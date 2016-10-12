@@ -81,6 +81,17 @@ app.controller('loginController', function($scope, $location, $rootScope){
 
 app.controller('authController', function($scope, $auth, $location){
 
+	$scope.login = function() {
+      $auth.login($scope.user)
+        .then(function() {
+          alert('You have successfully signed in!');
+          $location.path('/profile');
+        })
+        .catch(function(error) {
+          console.log(error.data.message, error.status);
+        });
+    };
+
 	$scope.authenticate = function(provider) {
 		$auth.authenticate(provider)
 		.then(function() {
