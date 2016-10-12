@@ -20,7 +20,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		clientId: '877900933221-t16rni758d1f9blqamfppeeqm1t4abo2.apps.googleusercontent.com',
 		url: '/auth/google',
 		authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-		redirectUri: window.location.origin + '/spa_demo',
+		redirectUri: window.location.origin,
 		requiredUrlParams: ['scope'],
 		optionalUrlParams: ['display'],
 		scope: ['profile', 'email'],
