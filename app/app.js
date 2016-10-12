@@ -23,6 +23,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	})
 	.state('profile', {
 		url: '/profile',
+		/*
 		resolve: {
 			"check": function($location, $rootScope){
 				if(!$rootScope.loggedIn){
@@ -30,21 +31,9 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 				} 
 			}
 		},
+		*/
 		templateUrl: 'partials/profile.tpl.html'
 	})
-	/*
-	.state('secret', {
-		url: '/secret',
-		resolve: {
-			"check": function($location, $rootScope){
-				if(!$rootScope.loggedIn){
-					$location.path('/');
-				} 
-			}
-		},
-		templateUrl: 'partials/secret.tpl.html'
-	})
-	*/
 	.state('login', {
 		url: '/login',
 		templateUrl: 'partials/login.tpl.html'
@@ -67,10 +56,9 @@ app.controller('loginController', function($scope, $location, $rootScope){
 
 app.controller('authController', function($scope, $auth, $location, $rootScope){
 
-	$scope.authenticate = function(provider, $rootScope) {
+	$scope.authenticate = function(provider) {
 		$auth.authenticate(provider)
-		.then(function($rootScope) {
-			$rootScope.loggedIn = true;
+		.then(function() {
 			$location.path('/profile');
 		})
 		.catch(function(error) {
