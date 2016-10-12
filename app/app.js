@@ -1,4 +1,4 @@
-var app = angular.module('mainApp', ['ui.router', 'satellizer']);
+var app = angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	$authProvider.facebook({
