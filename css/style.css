@@ -44,3 +44,8 @@ button.fa-auth {
 .goHide {
 	display: none;
 }
+
+.google-auth {
+	background-color: #dd4b39;
+	color: #fff;
+}

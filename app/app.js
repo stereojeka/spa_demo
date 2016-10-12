@@ -16,6 +16,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		popupOptions: { width: 580, height: 400 }
 	});
 
+	$authProvider.google({
+      clientId: '877900933221-t16rni758d1f9blqamfppeeqm1t4abo2.apps.googleusercontent.com'
+    });
+
 	$stateProvider
 	.state('home', {
 		url: '/home',
