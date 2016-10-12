@@ -34,7 +34,12 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		*/
 		templateUrl: 'partials/profile.tpl.html',
 		resolve: {
-			loginRequired: loginRequired
+			//loginRequired: loginRequired
+			"check": function($location, $rootScope){
+				if(!$rootScope.loggedIn){
+					$location.path('/');
+				} 
+			}
 		}
 	})
 	.state('login', {
@@ -61,7 +66,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		if ($auth.isAuthenticated()) {
 			deferred.resolve();
 		} else {
-			$location.path('/profile');
+			$location.path('/login');
 		}
 		return deferred.promise;
 	}
