@@ -61,7 +61,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		if ($auth.isAuthenticated()) {
 			deferred.resolve();
 		} else {
-			$location.path('/login');
+			$location.path('/profile');
 		}
 		return deferred.promise;
 	}
