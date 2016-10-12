@@ -124,7 +124,7 @@ app.controller('LogoutCtrl', function($location, $auth) {
 	});
 });
 
-app.controller('ProfileCtrl', function($scope, $auth, Account, $window) {
+app.controller('ProfileCtrl', function($scope, $auth, Account) {
 	$scope.getProfile = function() {
 		Account.getProfile()
 		.then(function(response) {
@@ -165,36 +165,15 @@ app.controller('ProfileCtrl', function($scope, $auth, Account, $window) {
 	};
 
 	$scope.getProfile();
-
-	$scope.getMyLastName = function() {
-		facebookService.getMyLastName() 
-		.then(function(response) {
-			$scope.last_name = response.last_name;
-		}
-		);
-	};
 });
 
-app.factory('Account', function($http, $q) {
+app.factory('Account', function($http) {
 	return {
 		getProfile: function() {
-			return $http.get('https://graph.facebook.com/me');
+			return $http.get('/spa_demo/api/me');
 		},
 		updateProfile: function(profileData) {
-			return $http.put('https://graph.facebook.com/me', profileData);
-		},
-		getMyLastName: function() {
-			var deferred = $q.defer();
-			FB.api('/me', {
-				fields: 'last_name'
-			}, function(response) {
-				if (!response || response.error) {
-					deferred.reject('Error occured');
-				} else {
-					deferred.resolve(response);
-				}
-			});
-			return deferred.promise;
+			return $http.put('/spa_demo/api/me', profileData);
 		}
 	};
 });
