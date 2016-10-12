@@ -16,14 +16,13 @@
 	<div class="container topMenu" ng-controller="menuController">
 		<a ui-sref="home">Home</a>
 		<!--<a ui-sref="login">Login</a> -->
-		<ul ng-if="isAuthenticated()" class="pull-right">
+		<ul ng-if="$rootScope.loggedIn" class="pull-right" style="list-style: none; display: inline-block;">
 			<li><a href="/spa_demo/#/profile">Profile</a></li>
 		</ul>
-		<ul ng-if="!isAuthenticated()" class="pull-right">
+		<ul ng-if="!$rootScope.loggedIn" class="pull-right" style="list-style: none; display: inline-block;">
 			<li><a href="/spa_demo/#/login">Login</a></li>
-			<li><a href="/spa_demo/#/signup">Sign up</a></li>
 		</ul>
-		<ul ng-if="isAuthenticated()" class="pull-right">
+		<ul ng-if="$rootScope.loggedIn" class="pull-right" style="list-style: none; display: inline-block;">
 			<li><a href="/spa_demo/#/logout">Logout</a></li>
 		</ul>
 	</div>
