@@ -32,11 +32,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		},
 		templateUrl: 'partials/profile.tpl.html'
 	})
-	.state('logout', {
-        url: '/logout',
-        template: 'partials/home.tpl.html',
-        controller: 'LogoutCtrl'
-      })
 	/*
 	.state('secret', {
 		url: '/secret',
@@ -73,43 +68,34 @@ app.controller('loginController', function($scope, $location, $rootScope){
 app.controller('authController', function($scope, $auth, $location, $rootScope){
 
 	$scope.authenticate = function(provider, $rootScope) {
-      $auth.authenticate(provider)
-        .then(function($rootScope) {
-        	$rootScope.loggedIn = true;
-          $location.path('/profile');
-        })
-        .catch(function(error) {
-          if (error.error) {
-            console.log(error.error);
-          } else if (error.data) {
-            console.log(error.data.message, error.status);
-          } else {
-            console.log(error);
-          }
-        });
-    };
+		$auth.authenticate(provider)
+		.then(function($rootScope) {
+			$rootScope.loggedIn = true;
+			$location.path('/profile');
+		})
+		.catch(function(error) {
+			if (error.error) {
+				console.log(error.error);
+			} else if (error.data) {
+				console.log(error.data.message, error.status);
+			} else {
+				console.log(error);
+			}
+		});
+	};
 
 });
 
-app.controller('menuController', function($scope, $auth, $rootScope) {
-    $scope.isAuthenticated = function() {
-      return $auth.isAuthenticated();
-    };
+app.controller('menuController', function($scope, $auth, $rootScope, $location) {
+	$scope.isAuthenticated = function() {
+		return $auth.isAuthenticated();
+	};
 
-    $scope.checkLogin = function(){
-    	if ($rootScope.loggedIn) {
-    		return true;
-    	} else {
-    		return false;
-    	}
-    };
-
-  });
-
-app.controller('LogoutCtrl', function($location, $auth) {
-    if (!$auth.isAuthenticated()) { return; }
-    $auth.logout()
-      .then(function() {
-        $location.path('/spa_demo');
-      });
-  });
+	$scope.logOut = function(){
+		if (!$auth.isAuthenticated()) { return; }
+		$auth.logout()
+		.then(function() {
+			$location.path('/spa_demo');
+		});
+	};
+});

@@ -13,16 +13,16 @@
 	<script src="app/app.js"></script>
 </head>
 <body ng-app="mainApp">
-	<div class="container topMenu" ng-controller="menuController">
+	<div ng-controller="menuController" class="container topMenu" >
 		<a ui-sref="home">Home</a>
 		<!--<a ui-sref="login">Login</a> -->
-		<ul ng-if="checkLogin() == true" class="pull-right" style="list-style: none; display: inline-block;">
+		<ul ng-if="isAuthenticated()" class="pull-right" style="list-style: none; display: inline-block;">
 			<li><a href="/spa_demo/#/profile">Profile</a></li>
 		</ul>
-		<ul ng-if="checkLogin() == false" class="pull-right" style="list-style: none; display: inline-block;">
+		<ul ng-if="!isAuthenticated()" class="pull-right" style="list-style: none; display: inline-block;">
 			<li><a href="/spa_demo/#/login">Login</a></li>
 		</ul>
-		<ul ng-if="checkLogin() == true" class="pull-right" style="list-style: none; display: inline-block;">
+		<ul ng-if="isAuthenticated()" ng-click="logOut()" class="pull-right" style="list-style: none; display: inline-block;">
 			<li><a href="/spa_demo/#/logout">Logout</a></li>
 		</ul>
 	</div>
