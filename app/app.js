@@ -75,3 +75,9 @@ app.controller('authController', function($scope, $auth, $location){
     };
 
 });
+
+app.controller('menuController', function($scope, $auth) {
+    $scope.isAuthenticated = function() {
+      return $auth.isAuthenticated();
+    };
+  });
