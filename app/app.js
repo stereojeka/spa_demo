@@ -32,6 +32,11 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		},
 		templateUrl: 'partials/profile.tpl.html'
 	})
+	.state('logout', {
+        url: '/logout',
+        template: null,
+        controller: 'LogoutCtrl'
+      })
 	/*
 	.state('secret', {
 		url: '/secret',
@@ -99,4 +104,12 @@ app.controller('menuController', function($scope, $auth, $rootScope) {
     	}
     };
 
+  });
+
+app.controller('LogoutCtrl', function($location, $auth) {
+    if (!$auth.isAuthenticated()) { return; }
+    $auth.logout()
+      .then(function() {
+        $location.path('/home');
+      });
   });
