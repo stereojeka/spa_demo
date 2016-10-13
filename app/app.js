@@ -1,4 +1,4 @@
-var app = angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource']);
+var app = angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource', 'ngStorage']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	$stateProvider
@@ -98,7 +98,9 @@ app.controller('loginController', function($scope, $location, $rootScope){
 	};
 });
 
-app.controller('authController', function($scope, $auth, $location){
+app.controller('authController', function($scope, $auth, $location, $localStorage){
+
+	$auth.setStorageType('localStorage');
 
 	$scope.login = function() {
 		$auth.login($scope.user)
@@ -115,7 +117,7 @@ app.controller('authController', function($scope, $auth, $location){
 		$auth.authenticate(provider)
 		.then(function() {
 			console.log('You have successfully signed in with ' + provider + '!');
-			$location.path('/');
+			$location.path('/profile');
 		})
 		.catch(function(error) {
 			if (error.error) {
@@ -178,10 +180,10 @@ app.controller('ProfileCtrl', function($scope, $auth, Account) {
 app.factory('Account', function($http) {
 	return {
 		getProfile: function() {
-			return $http.get('https://graph.facebook.com/me');
+			return $http.get('/api/me');
 		},
 		updateProfile: function(profileData) {
-			return $http.put('https://graph.facebook.com/me', profileData);
+			return $http.put('/api/me', profileData);
 		}
 	};
 });
