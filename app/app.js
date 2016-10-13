@@ -30,13 +30,37 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	});
 	$urlRouterProvider.otherwise('/login');
 
+	// Facebook
 	$authProvider.facebook({
-		clientId: '1336322916420295'
+		clientId: '1336322916420295',
+		name: 'facebook',
+		url: '/auth/facebook',
+		authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
+		redirectUri: window.location.origin + '/',
+		requiredUrlParams: ['display', 'scope'],
+		scope: ['email'],
+		scopeDelimiter: ',',
+		display: 'popup',
+		oauthType: '2.0',
+		popupOptions: { width: 580, height: 400 }
 	});
 
+	// Google
 	$authProvider.google({
-		clientId: '877900933221-t16rni758d1f9blqamfppeeqm1t4abo2.apps.googleusercontent.com'
+		clientId: '877900933221-t16rni758d1f9blqamfppeeqm1t4abo2.apps.googleusercontent.com',
+		url: '/auth/google',
+		authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
+		redirectUri: window.location.origin,
+		requiredUrlParams: ['scope'],
+		optionalUrlParams: ['display'],
+		scope: ['profile', 'email'],
+		scopePrefix: 'openid',
+		scopeDelimiter: ' ',
+		display: 'popup',
+		oauthType: '2.0',
+		popupOptions: { width: 452, height: 633 }
 	});
+
 
 	function skipIfLoggedIn($q, $auth) {
 		var deferred = $q.defer();
