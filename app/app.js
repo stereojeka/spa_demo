@@ -1,37 +1,6 @@
 var app = angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource']);
 
 app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
-	$authProvider.facebook({
-		clientId: '1336322916420295',
-		responseType: 'token',
-		name: 'facebook',
-		url: '/auth/facebook',
-		authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-		redirectUri: window.location.origin + '/auth/facebook/callback',
-		requiredUrlParams: ['display', 'scope'],
-		scope: ['email'],
-		scopeDelimiter: ',',
-		display: 'popup',
-		oauthType: '2.0',
-		popupOptions: { width: 580, height: 400 }
-	});
-
-	$authProvider.google({
-		clientId: '877900933221-t16rni758d1f9blqamfppeeqm1t4abo2.apps.googleusercontent.com',
-		responseType: 'token',
-		url: '/auth/google',
-		authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-		redirectUri: window.location.origin + '/auth/google/callback',
-		requiredUrlParams: ['scope'],
-		optionalUrlParams: ['display'],
-		scope: ['profile', 'email'],
-		scopePrefix: 'openid',
-		scopeDelimiter: ' ',
-		display: 'popup',
-		oauthType: '2.0',
-		popupOptions: { width: 452, height: 633 }
-	});
-
 	$stateProvider
 	.state('home', {
 		url: '/home',
@@ -60,6 +29,14 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		*/
 	});
 	$urlRouterProvider.otherwise('/login');
+
+	$authProvider.facebook({
+		clientId: '1336322916420295'
+	});
+
+	$authProvider.google({
+		clientId: '877900933221-t16rni758d1f9blqamfppeeqm1t4abo2.apps.googleusercontent.com'
+	});
 
 	function skipIfLoggedIn($q, $auth) {
 		var deferred = $q.defer();
@@ -100,7 +77,8 @@ app.controller('authController', function($scope, $auth, $location){
 	$scope.login = function() {
 		$auth.login($scope.user)
 		.then(function() {
-			$location.path('/profile');
+			console.log('You have successfully signed in!');
+			$location.path('/');
 		})
 		.catch(function(error) {
 			console.log(error.data.message, error.status);
@@ -110,17 +88,20 @@ app.controller('authController', function($scope, $auth, $location){
 	$scope.authenticate = function(provider) {
 		$auth.authenticate(provider)
 		.then(function() {
-			$location.path('/profile');
+			console.log('You have successfully signed in with ' + provider + '!');
+			$location.path('/');
 		})
 		.catch(function(error) {
 			if (error.error) {
-				console.log(error.error);
-			} else if (error.data) {
-				console.log(error.data.message, error.status);
-			} else {
-				console.log(error);
-			}
-		});
+            // Popup error - invalid redirect_uri, pressed cancel button, etc.
+            console.log(error.error);
+        } else if (error.data) {
+            // HTTP response error from server
+            console.log(error.data.message, error.status);
+        } else {
+        	console.log(error);
+        }
+    });
 	};
 
 });
