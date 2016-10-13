@@ -33,10 +33,11 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	// Facebook
 	$authProvider.facebook({
 		clientId: '1336322916420295',
+		responseType: 'token',
 		name: 'facebook',
 		url: '/spa_demo/auth/facebook',
 		authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-		redirectUri: window.location.origin + '/spa_demo',
+		redirectUri: window.location.origin + '/spa_demo/',
 		requiredUrlParams: ['display', 'scope'],
 		scope: ['email'],
 		scopeDelimiter: ',',
@@ -48,9 +49,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	// Google
 	$authProvider.google({
 		clientId: '877900933221-t16rni758d1f9blqamfppeeqm1t4abo2.apps.googleusercontent.com',
+		responseType: 'token',
 		url: '/spa_demo/auth/google',
 		authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-		redirectUri: window.location.origin + '/spa_demo',
+		redirectUri: window.location.origin + '/spa_demo/',
 		requiredUrlParams: ['scope'],
 		optionalUrlParams: ['display'],
 		scope: ['profile', 'email'],
