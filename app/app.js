@@ -7,7 +7,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		name: 'facebook',
 		url: '/auth/facebook',
 		authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-		redirectUri: window.location.origin + '/',
+		redirectUri: 'https://stereojeka.github.io/spa_demo/profile',
 		requiredUrlParams: ['display', 'scope'],
 		scope: ['email'],
 		scopeDelimiter: ',',
@@ -18,9 +18,10 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 
 	$authProvider.google({
 		clientId: '877900933221-t16rni758d1f9blqamfppeeqm1t4abo2.apps.googleusercontent.com',
+		responseType: 'token',
 		url: '/auth/google',
 		authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-		redirectUri: window.location.origin + '/spa_demo',
+		redirectUri: 'https://stereojeka.github.io/spa_demo/profile',//window.location.origin + '/spa_demo',
 		requiredUrlParams: ['scope'],
 		optionalUrlParams: ['display'],
 		scope: ['profile', 'email'],
