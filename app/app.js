@@ -41,7 +41,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		requiredUrlParams: ['display', 'scope'],
 		scope: ['email'],
 		scopeDelimiter: ',',
-		display: 'popup',
+		display: 'page',
 		oauthType: '2.0',
 		popupOptions: { width: 580, height: 400 }
 	});
@@ -58,7 +58,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		scope: ['profile', 'email'],
 		scopePrefix: 'openid',
 		scopeDelimiter: ' ',
-		display: 'popup',
+		display: 'page',//'popup',
 		oauthType: '2.0',
 		popupOptions: { width: 452, height: 633 }
 	});
