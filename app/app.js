@@ -63,18 +63,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 		popupOptions: { width: 452, height: 633 }
 	});
 
-
-	$authProvider.authHeader = 'x-access-token';
-    $authProvider.httpInterceptor = true; // Add Authorization header to HTTP request
-    $authProvider.tokenPrefix = 'twitterAuth'; // Local Storage name prefix
-
-
     $authProvider.twitter({
-    	url: '/auth/twitter',
-    	authorizationEndpoint: 'https://api.twitter.com/oauth/authenticate',
-    	redirectUri: window.location.origin,
-    	oauthType: '1.0',
-    	popupOptions: { width: 495, height: 645 }
+      url: '/auth/twitter'
     });
 
     function skipIfLoggedIn($q, $auth) {
