@@ -29,6 +29,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		*/
 	});
 	$urlRouterProvider.otherwise('/login');
+	$locationProvider.html5Mode(true);
 
 	// Facebook
 	$authProvider.facebook({
@@ -41,7 +42,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		requiredUrlParams: ['display', 'scope'],
 		scope: ['email'],
 		scopeDelimiter: ',',
-		display: 'page',
+		display: 'popup',
 		oauthType: '2.0',
 		popupOptions: { width: 580, height: 400 }
 	});
@@ -58,11 +59,22 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 		scope: ['profile', 'email'],
 		scopePrefix: 'openid',
 		scopeDelimiter: ' ',
-		display: 'page',//'popup',
+		display: 'popup',
 		oauthType: '2.0',
 		popupOptions: { width: 452, height: 633 }
 	});
 
+
+	$authProvider.authHeader = 'x-access-token';
+    $authProvider.httpInterceptor = true; // Add Authorization header to HTTP request
+    $authProvider.tokenPrefix = 'twitterAuth'; // Local Storage name prefix
+
+
+    $authProvider.twitter({
+      url: '/auth/twitter',
+      type: '1.0',
+      popupOptions: { width: 495, height: 645 }
+    });
 
 	function skipIfLoggedIn($q, $auth) {
 		var deferred = $q.defer();
@@ -151,19 +163,12 @@ app.controller('LogoutCtrl', function($location, $auth) {
 
 app.controller('ProfileCtrl', function($scope, $auth, Account) {
 
-	$scope.isAuthenticated = function() {
-		return $auth.isAuthenticated();
-	};
+	Account.getProfile()
+        .success(function(data) {
+          $scope.user = data;
+        });
 
-	$scope.getProfile = function() {
-		Account.getProfile()
-		.then(function(response) {
-			$scope.user = response.data;
-		})
-		.catch(function(response) {
-			console.log(response.data.message, response.status);
-		});
-	};
+
 	$scope.updateProfile = function() {
 		Account.updateProfile($scope.user)
 		.then(function() {
@@ -174,7 +179,7 @@ app.controller('ProfileCtrl', function($scope, $auth, Account) {
 		});
 	};
 
-	$scope.getProfile();
+	//$scope.getProfile();
 });
 
 app.factory('Account', function($http) {
