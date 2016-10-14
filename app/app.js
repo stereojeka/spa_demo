@@ -70,30 +70,32 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 
 
     $authProvider.twitter({
-      url: '/auth/twitter',
-      type: '1.0',
-      popupOptions: { width: 495, height: 645 }
+    	url: '/auth/twitter',
+    	authorizationEndpoint: 'https://api.twitter.com/oauth/authenticate',
+    	redirectUri: window.location.origin,
+    	oauthType: '1.0',
+    	popupOptions: { width: 495, height: 645 }
     });
 
-	function skipIfLoggedIn($q, $auth) {
-		var deferred = $q.defer();
-		if ($auth.isAuthenticated()) {
-			deferred.reject();
-		} else {
-			deferred.resolve();
-		}
-		return deferred.promise;
-	}
+    function skipIfLoggedIn($q, $auth) {
+    	var deferred = $q.defer();
+    	if ($auth.isAuthenticated()) {
+    		deferred.reject();
+    	} else {
+    		deferred.resolve();
+    	}
+    	return deferred.promise;
+    }
 
-	function loginRequired($q, $location, $auth) {
-		var deferred = $q.defer();
-		if ($auth.isAuthenticated()) {
-			deferred.resolve();
-		} else {
-			$location.path('/login');
-		}
-		return deferred.promise;
-	}
+    function loginRequired($q, $location, $auth) {
+    	var deferred = $q.defer();
+    	if ($auth.isAuthenticated()) {
+    		deferred.resolve();
+    	} else {
+    		$location.path('/login');
+    	}
+    	return deferred.promise;
+    }
 
 });
 
@@ -163,9 +165,9 @@ app.controller('LogoutCtrl', function($location, $auth) {
 app.controller('ProfileCtrl', function($scope, $auth, Account) {
 
 	Account.getProfile()
-        .success(function(data) {
-          $scope.user = data;
-        });
+	.success(function(data) {
+		$scope.user = data;
+	});
 
 
 /*
@@ -178,7 +180,7 @@ app.controller('ProfileCtrl', function($scope, $auth, Account) {
 			console.log(response.data.message, response.status);
 		});
 	};
-*/
+	*/
 	//$scope.getProfile();
 });
 
