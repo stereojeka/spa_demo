@@ -1,6 +1,6 @@
 var app = angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource', 'ngStorage']);
 
-app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locationProvider) {
 	$stateProvider
 	.state('home', {
 		url: '/home',
@@ -169,6 +169,7 @@ app.controller('ProfileCtrl', function($scope, $auth, Account) {
         });
 
 
+/*
 	$scope.updateProfile = function() {
 		Account.updateProfile($scope.user)
 		.then(function() {
@@ -178,7 +179,7 @@ app.controller('ProfileCtrl', function($scope, $auth, Account) {
 			console.log(response.data.message, response.status);
 		});
 	};
-
+*/
 	//$scope.getProfile();
 });
 
