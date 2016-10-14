@@ -28,8 +28,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 		}
 		*/
 	});
-	$urlRouterProvider.otherwise('/login');
-	$locationProvider.html5Mode(true);
+	$urlRouterProvider.otherwise('/home');
 
 	// Facebook
 	$authProvider.facebook({
