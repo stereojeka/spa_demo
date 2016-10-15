@@ -37,7 +37,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 		name: 'facebook',
 		url: '/auth/facebook',
 		authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-		redirectUri: window.location.origin + '/spa_demo/',
+		redirectUri: window.location.origin + '/spa_demo/profile',
 		requiredUrlParams: ['display', 'scope'],
 		scope: ['email'],
 		scopeDelimiter: ',',
@@ -52,7 +52,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 		responseType: 'token',
 		url: '/auth/google',
 		authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-		redirectUri: window.location.origin + '/spa_demo/',
+		redirectUri: window.location.origin + '/spa_demo/profile',
 		requiredUrlParams: ['scope'],
 		optionalUrlParams: ['display'],
 		scope: ['profile', 'email'],
@@ -62,10 +62,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 		oauthType: '2.0',
 		popupOptions: { width: 452, height: 633 }
 	});
-
-    $authProvider.twitter({
-      url: '/auth/twitter'
-    });
 
     function skipIfLoggedIn($q, $auth) {
     	var deferred = $q.defer();
