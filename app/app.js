@@ -37,7 +37,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 		name: 'facebook',
 		url: '/auth/facebook',
 		authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-		redirectUri: window.location.origin + '/spa_demo/profile',
+		redirectUri: window.location.origin + '/spa_demo/',
 		requiredUrlParams: ['display', 'scope'],
 		scope: ['email'],
 		scopeDelimiter: ',',
@@ -52,7 +52,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 		responseType: 'token',
 		url: '/auth/google',
 		authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-		redirectUri: window.location.origin + '/spa_demo/profile',
+		redirectUri: window.location.origin + '/spa_demo/',
 		requiredUrlParams: ['scope'],
 		optionalUrlParams: ['display'],
 		scope: ['profile', 'email'],
@@ -99,7 +99,11 @@ app.controller('loginController', function($scope, $location, $rootScope){
 
 app.controller('authController', function($scope, $auth, $location, $localStorage){
 
-	$auth.setStorageType('localStorage');
+	//$auth.setStorageType('localStorage');
+
+	$scope.isAuthenticated = function() {
+		return $auth.isAuthenticated();
+	};
 
 	$scope.login = function() {
 		$auth.login($scope.user)
@@ -117,6 +121,7 @@ app.controller('authController', function($scope, $auth, $location, $localStorag
 		.then(function() {
 			console.log('You have successfully signed in with ' + provider + '!');
 			$location.path('/profile');
+			console.log($auth.isAuthenticated());
 		})
 		.catch(function(error) {
 			if (error.error) {
