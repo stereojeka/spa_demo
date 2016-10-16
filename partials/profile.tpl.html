@@ -1,4 +1,7 @@
-<div class="container">
+<div class="container" ng-controller="ProfileCtrl">
+  <div ng-controller="menuController">
+    <h1> isAuth: {{ isAuthenticated() }} </h1>
+  </div>
   <div class="panel panel-default">
     <div class="panel-heading">Profile</div>
     <div class="panel-body">
