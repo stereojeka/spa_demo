@@ -1,4 +1,5 @@
-app.controller('SignupCtrl', function($scope, $location, $auth) {
+angular.module('mainApp')
+.controller('SignupCtrl', function($scope, $location, $auth) {
     $scope.signup = function() {
       $auth.signup($scope.user)
         .then(function(response) {

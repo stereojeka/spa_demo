@@ -1,4 +1,5 @@
-app.controller('NavbarCtrl', function($scope, $auth) {
+angular.module('mainApp')
+.controller('NavbarCtrl', function($scope, $auth) {
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };

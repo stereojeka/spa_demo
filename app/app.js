@@ -1,5 +1,5 @@
-var app = angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource', 'ngStorage']);
-app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
+angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource', 'ngStorage']);
+.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	$stateProvider
 	.state('home', {
 		url: '/home',
