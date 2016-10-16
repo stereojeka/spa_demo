@@ -1,4 +1,4 @@
-app.controller('SignupCtrl', function($scope, $location, $auth, toastr) {
+app.controller('SignupCtrl', function($scope, $location, $auth) {
     $scope.signup = function() {
       $auth.signup($scope.user)
         .then(function(response) {
