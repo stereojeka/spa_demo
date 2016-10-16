@@ -1,32 +1,32 @@
-angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource', 'ngStorage'])
-	.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
-		$stateProvider
-		.state('home', {
-			url: '/home',
-			controller: 'HomeCtrl',
-			templateUrl: 'partials/home.tpl.html'
-		})
-		.state('profile', {
-			url: '/profile',
-			controller: 'ProfileCtrl',
-			templateUrl: 'partials/profile.tpl.html'
-		})
-		.state('logout', {
-			url: '/logout',
-			template: null,
-			controller: 'LogoutCtrl'
-		})
-		.state('login', {
-			url: '/login',
-			controller: 'LoginCtrl',
-			templateUrl: 'partials/login.tpl.html'
+var app = angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource', 'ngStorage']);
+app.config(function ($stateProvider, $urlRouterProvider, $authProvider) {
+	$stateProvider
+	.state('home', {
+		url: '/home',
+		controller: 'HomeCtrl',
+		templateUrl: 'partials/home.tpl.html'
+	})
+	.state('profile', {
+		url: '/profile',
+		controller: 'ProfileCtrl',
+		templateUrl: 'partials/profile.tpl.html'
+	})
+	.state('logout', {
+		url: '/logout',
+		template: null,
+		controller: 'LogoutCtrl'
+	})
+	.state('login', {
+		url: '/login',
+		controller: 'LoginCtrl',
+		templateUrl: 'partials/login.tpl.html'
 					/*
 					resolve: {
 						skipIfLoggedIn: skipIfLoggedIn
 					}
 					*/
 				});
-		$urlRouterProvider.otherwise('/home');
+	$urlRouterProvider.otherwise('/home');
 
 				// Facebook
 				$authProvider.facebook({
@@ -81,4 +81,4 @@ angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource', 'ngStorage']
 					return deferred.promise;
 				}
 
-	});
+			});

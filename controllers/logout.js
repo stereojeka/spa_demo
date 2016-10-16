@@ -1,5 +1,4 @@
-angular.module('mainApp')
-  .controller('LogoutCtrl', function($location, $auth) {
+app.controller('LogoutCtrl', function($location, $auth) {
     if (!$auth.isAuthenticated()) { return; }
     $auth.logout()
       .then(function() {
