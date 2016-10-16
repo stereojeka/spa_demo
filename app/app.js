@@ -1,4 +1,4 @@
-angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource', 'ngStorage']);
+angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource', 'ngStorage'])
 .config(function ($stateProvider, $urlRouterProvider, $authProvider) {
 	$stateProvider
 	.state('home', {
