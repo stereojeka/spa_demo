@@ -135,15 +135,6 @@ app.controller('profileController', function($scope, $auth, Account, $localStora
 		.catch(function(response) {
 			console.log(response.data.message, response.status);
 		});
-
-		Account.getEmail()
-		.then(function(response) {
-			$scope.userEmail = response.data;
-			console.log($scope.userEmail);
-		})
-		.catch(function(response) {
-			console.log(response.data.message, response.status);
-		});
 	};
 
 	$scope.getProfile();
@@ -153,9 +144,6 @@ app.factory('Account', function($http, $localStorage) {
 	return {
 		getProfile: function() {
 			return $http.get('https://www.googleapis.com/plus/v1/people/me');
-		},
-		getEmail: function() {
-			return $http.get('https://www.googleapis.com/plus/v1/people/userinfo.email');
 		},
 		updateProfile: function(profileData) {
 			return $http.put('/api/me', profileData);
