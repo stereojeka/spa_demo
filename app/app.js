@@ -88,6 +88,7 @@ app.controller('authController', function($scope, $auth, $location, $localStorag
 		.then(function() {
 			console.log('You have successfully signed in with ' + provider + '!');
 			$localStorage.loggedIn = true;
+			$localStorage.accessToken = $auth.getToken();
 			$location.path('/profile');
 			console.log($auth.isAuthenticated());
 		})
@@ -122,13 +123,15 @@ app.controller('logoutController', function($location, $localStorage) {
 	}
 });
 
-app.controller('ProfileCtrl', function($scope, $auth, Account) {
+app.controller('profileController', function($scope, $auth, Account, $localStorage) {
 
-	Account.getProfile()
-	.success(function(data) {
-		$scope.user = data;
+	Account.getAuth()
+	.success(function() {
+		Account.getProfile()
+		.success(function(data) {
+			$scope.user = data;
+		});
 	});
-
 
 /*
 	$scope.updateProfile = function() {
@@ -144,10 +147,13 @@ app.controller('ProfileCtrl', function($scope, $auth, Account) {
 	//$scope.getProfile();
 });
 
-app.factory('Account', function($http) {
+app.factory('Account', function($http, $localStorage) {
 	return {
 		getProfile: function() {
-			return $http.get('/api/me');
+			return $http.get('https://api.github.com/user');
+		},
+		getAuth: function() {
+			return $http.get('https://api.github.com/?access_token=' + $localStorage.accessToken);
 		},
 		updateProfile: function(profileData) {
 			return $http.put('/api/me', profileData);
