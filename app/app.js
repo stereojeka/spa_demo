@@ -1,6 +1,6 @@
 var app = angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource', 'ngStorage']);
 
-app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locationProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locationProvider, $localStorage) {
 	$stateProvider
 	.state('home', {
 		url: '/home',
