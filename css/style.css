@@ -60,8 +60,7 @@ button.fa-auth {
 	color: #fff;
 }
 
-.git-auth:hover,
-.git-auth:focus {
+.git-auth:hover {
 	color: #fff;
 	background-color: #303030;
 }

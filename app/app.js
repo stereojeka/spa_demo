@@ -65,15 +65,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 
 	$authProvider.github({
 		clientId: '153ea8b8debdbfee9b1d',
-		responseType: 'token',
-		url: '/auth/github',
-		authorizationEndpoint: 'https://github.com/login/oauth/authorize',
-		redirectUri: window.location.origin + '/spa_demo/',
-		optionalUrlParams: ['scope'],
-		scope: ['user:email'],
-		scopeDelimiter: ' ',
-		oauthType: '2.0',
-		popupOptions: { width: 1020, height: 618 }
+		responseType: 'token'
 	});
 
 });
