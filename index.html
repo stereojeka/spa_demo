@@ -15,7 +15,7 @@
 			<li><a href="/spa_demo/#/login">Login</a></li>
 		</ul>
 		<ul ng-if="isLoggedIn()" class="pull-right" style="list-style: none; display: inline-block;">
-			<li ng-controller="logoutController"><a href="/spa_demo/#/logout">Logout</a></li>
+			<a ui-sref="logout">Logout</a></li>
 		</ul>
 	</div>
 	<div ui-view></div>
