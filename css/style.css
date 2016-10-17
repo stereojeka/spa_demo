@@ -1,6 +1,6 @@
 body {
-  font-family: 'Open Sans', sans-serif;
-  background: #e4e7ec;
+	font-family: 'Open Sans', sans-serif;
+	background: #e4e7ec;
 }
 
 .topMenu {
@@ -38,7 +38,7 @@ body {
 
 button.fa-auth {
 	color: #fff;
-    background-color: #294786;
+	background-color: #294786;
 }
 
 .goHide {
@@ -53,4 +53,15 @@ button.fa-auth {
 .tw-auth {
 	background-color: #0090c7;
 	color: #fff;
+}
+
+.git-auth {
+	background-color: : #444;
+	color: #fff;
+}
+
+.git-auth:hover,
+.git-auth:focus {
+	color: #fff;
+	background-color: #303030;
 }

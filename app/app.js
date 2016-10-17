@@ -63,33 +63,24 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 		popupOptions: { width: 452, height: 633 }
 	});
 
-    function skipIfLoggedIn($q, $auth) {
-    	var deferred = $q.defer();
-    	if ($auth.isAuthenticated()) {
-    		deferred.reject();
-    	} else {
-    		deferred.resolve();
-    	}
-    	return deferred.promise;
-    }
-
-    function loginRequired($q, $location, $auth) {
-    	var deferred = $q.defer();
-    	if ($auth.isAuthenticated()) {
-    		deferred.resolve();
-    	} else {
-    		$location.path('/login');
-    	}
-    	return deferred.promise;
-    }
+	$authProvider.github({
+		clientId: '153ea8b8debdbfee9b1d',
+		responseType: 'token',
+		url: '/auth/github',
+		authorizationEndpoint: 'https://github.com/login/oauth/authorize',
+		redirectUri: window.location.origin + '/spa_demo/',
+		optionalUrlParams: ['scope'],
+		scope: ['user:email'],
+		scopeDelimiter: ' ',
+		oauthType: '2.0',
+		popupOptions: { width: 1020, height: 618 }
+	});
 
 });
 
-app.controller('loginController', function($scope, $location, $rootScope){
+app.controller('loginController', function($scope, $location){
 	$scope.submit = function(){
-
 		if($scope.username == 'admin' && $scope.password == 'admin'){
-			$rootScope.loggedIn = true;
 			$location.path('/profile');
 		} else {
 			alert('Wrong stuff!');
@@ -98,8 +89,6 @@ app.controller('loginController', function($scope, $location, $rootScope){
 });
 
 app.controller('authController', function($scope, $auth, $location, $localStorage, Account){
-
-	//$auth.setStorageType('localStorage');
 
 	$scope.isAuthenticated = function() {
 		return $auth.isAuthenticated();
@@ -137,14 +126,14 @@ app.controller('authController', function($scope, $auth, $location, $localStorag
 	};
 
 	$scope.getProfile = function() {
-      Account.getProfile()
-        .then(function(response) {
-          $scope.user = response.data;
-        })
-        .catch(function(response) {
-          console.log(response.data.message, response.status);
-        });
-    };
+		Account.getProfile()
+		.then(function(response) {
+			$scope.user = response.data;
+		})
+		.catch(function(response) {
+			console.log(response.data.message, response.status);
+		});
+	};
 
 });
 
