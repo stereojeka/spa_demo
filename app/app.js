@@ -97,7 +97,7 @@ app.controller('loginController', function($scope, $location, $rootScope){
 	};
 });
 
-app.controller('authController', function($scope, $auth, $location, $localStorage){
+app.controller('authController', function($scope, $auth, $location, $localStorage, Account){
 
 	//$auth.setStorageType('localStorage');
 
