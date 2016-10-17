@@ -8,25 +8,30 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 	})
 	.state('profile', {
 		url: '/profile',
-		/*
 		resolve: {
-			"check": function($location, $rootScope){
-				if(!$rootScope.loggedIn){
+			"check": function($location, $localStorage){
+				if(!$localStorage.loggedIn){
 					$location.path('/');
 				} 
 			}
 		},
-		*/
-		templateUrl: 'partials/profile.tpl.html',
+		templateUrl: 'partials/profile.tpl.html'
+	})
+	.state('logout', {
+		url: '/logout',
+		template: null,
+		controller: 'logoutController'
 	})
 	.state('login', {
 		url: '/login',
 		templateUrl: 'partials/login.tpl.html'
-		/*
 		resolve: {
-			skipIfLoggedIn: skipIfLoggedIn
+			"check": function($location, $localStorage){
+				if($localStorage.loggedIn){
+					$location.path('/');
+				} 
+			}
 		}
-		*/
 	});
 	$urlRouterProvider.otherwise('/home');
 
@@ -78,9 +83,11 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 
 });
 
-app.controller('loginController', function($scope, $location){
+app.controller('loginController', function($scope, $location, $localStorage){
+	$localStorage.loggedIn = false;
 	$scope.submit = function(){
 		if($scope.username == 'admin' && $scope.password == 'admin'){
+			$localStorage.loggedIn = true;
 			$location.path('/profile');
 		} else {
 			alert('Wrong stuff!');
@@ -90,25 +97,11 @@ app.controller('loginController', function($scope, $location){
 
 app.controller('authController', function($scope, $auth, $location, $localStorage, Account){
 
-	$scope.isAuthenticated = function() {
-		return $auth.isAuthenticated();
-	};
-
-	$scope.login = function() {
-		$auth.login($scope.user)
-		.then(function() {
-			console.log('You have successfully signed in!');
-			$location.path('/');
-		})
-		.catch(function(error) {
-			console.log(error.data.message, error.status);
-		});
-	};
-
 	$scope.authenticate = function(provider) {
 		$auth.authenticate(provider)
 		.then(function() {
 			console.log('You have successfully signed in with ' + provider + '!');
+			$localStorage.loggedIn = true;
 			$location.path('/profile');
 			console.log($auth.isAuthenticated());
 		})
@@ -125,26 +118,16 @@ app.controller('authController', function($scope, $auth, $location, $localStorag
     });
 	};
 
-	$scope.getProfile = function() {
-		Account.getProfile()
-		.then(function(response) {
-			$scope.user = response.data;
-		})
-		.catch(function(response) {
-			console.log(response.data.message, response.status);
-		});
-	};
-
 });
 
-app.controller('menuController', function($scope, $auth) {
-	$scope.isAuthenticated = function() {
-		return $auth.isAuthenticated();
+app.controller('menuController', function($scope, $localStorage) {
+	$scope.isLoggedIn = function() {
+		return $localStorage.loggedIn;
 	};
 });
 
 
-app.controller('LogoutCtrl', function($location, $auth) {
+app.controller('logoutController', function($location, $auth) {
 	if (!$auth.isAuthenticated()) { return; }
 	$auth.logout()
 	.then(function() {

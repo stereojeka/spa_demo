@@ -10,11 +10,11 @@
 <body>
 	<div ng-controller="menuController" class="container topMenu" >
 		<a ui-sref="home">Home</a>
-		<a href="/spa_demo/#/profile">Profile</a>
-		<ul ng-if="!isAuthenticated()" class="pull-right" style="list-style: none; display: inline-block;">
+		<a ng-if="isLoggedIn()" href="/spa_demo/#/profile">Profile</a>
+		<ul ng-if="!isLoggedIn()" class="pull-right" style="list-style: none; display: inline-block;">
 			<li><a href="/spa_demo/#/login">Login</a></li>
 		</ul>
-		<ul ng-if="isAuthenticated()" class="pull-right" style="list-style: none; display: inline-block;">
+		<ul ng-if="isLoggedIn()" class="pull-right" style="list-style: none; display: inline-block;">
 			<li ng-controller="LogoutCtrl"><a href="/spa_demo/#/logout">Logout</a></li>
 		</ul>
 	</div>
