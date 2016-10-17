@@ -130,6 +130,7 @@ app.controller('profileController', function($scope, $auth, Account, $localStora
       Account.getProfile()
         .then(function(response) {
           $scope.user = response.data;
+          console.log(response.data);
         })
         .catch(function(response) {
           console.log(response.data.message, response.status);
