@@ -8,6 +8,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 	})
 	.state('profile', {
 		url: '/profile',
+		/*
 		resolve: {
 			"check": function($location){
 				if(!$localStorage.loggedIn){
@@ -15,6 +16,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 				} 
 			}
 		},
+		*/
 		templateUrl: 'partials/profile.tpl.html'
 	})
 	.state('logout', {
@@ -24,7 +26,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 	})
 	.state('login', {
 		url: '/login',
-		templateUrl: 'partials/login.tpl.html',
+		templateUrl: 'partials/login.tpl.html'/*,
 		resolve: {
 			"check": function($location, $localStorage){
 				if($localStorage.loggedIn){
@@ -32,6 +34,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 				} 
 			}
 		}
+		*/
 	});
 	$urlRouterProvider.otherwise('/home');
 
