@@ -56,7 +56,7 @@ button.fa-auth {
 }
 
 .git-auth {
-	background-color: : black;
-	color: #fff;
+	background: #444 !important;
+	color: #fff !important;
 }
 
