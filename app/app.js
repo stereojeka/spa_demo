@@ -9,7 +9,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 	.state('profile', {
 		url: '/profile',
 		resolve: {
-			"check": function($location, $localStorage){
+			"check": function($location){
 				if(!$localStorage.loggedIn){
 					$location.path('/');
 				} 
