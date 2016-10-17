@@ -142,7 +142,7 @@ app.controller('authController', function($scope, $auth, $location, $localStorag
           $scope.user = response.data;
         })
         .catch(function(response) {
-          toastr.error(response.data.message, response.status);
+          console.log(response.data.message, response.status);
         });
     };
 
