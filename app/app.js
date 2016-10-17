@@ -126,38 +126,23 @@ app.controller('logoutController', function($location, $localStorage) {
 
 app.controller('profileController', function($scope, $auth, Account, $localStorage) {
 
-	Account.getAuth()
-	.success(function() {
-		console.log("success!");
-		Account.getProfile()
-		.success(function(data) {
-			$scope.user = data;
-		});
-	});	
+	$scope.getProfile = function() {
+      Account.getProfile()
+        .then(function(response) {
+          $scope.user = response.data;
+        })
+        .catch(function(response) {
+          console.log(response.data.message, response.status);
+        });
+    };
 
-	
-
-/*
-	$scope.updateProfile = function() {
-		Account.updateProfile($scope.user)
-		.then(function() {
-			console.log('Profile has been updated');
-		})
-		.catch(function(response) {
-			console.log(response.data.message, response.status);
-		});
-	};
-	*/
-	//$scope.getProfile();
+	$scope.getProfile();
 });
 
 app.factory('Account', function($http, $localStorage) {
 	return {
 		getProfile: function() {
-			return $http.get('https://api.github.com/user');
-		},
-		getAuth: function() {
-			return $http.get('https://api.github.com/?access_token=3c55e3fc28611e278c07070e1ff1e95d298baba4');
+			return $http.get('https://www.googleapis.com/plus/v1/people/me');
 		},
 		updateProfile: function(profileData) {
 			return $http.put('/api/me', profileData);
