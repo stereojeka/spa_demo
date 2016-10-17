@@ -113,12 +113,13 @@ app.controller('menuController', function($scope, $localStorage) {
 });
 
 
-app.controller('logoutController', function($location, $auth) {
-	if (!$auth.isAuthenticated()) { return; }
-	$auth.logout()
-	.then(function() {
-		$location.path('/');
-	});
+app.controller('logoutController', function($location, $localStorage) {
+	if($localStorage.loggedIn){
+		$localStorage.loggedIn = false;
+		$location.path('/login');
+	}else{
+		return;
+	}
 });
 
 app.controller('ProfileCtrl', function($scope, $auth, Account) {
