@@ -136,6 +136,16 @@ app.controller('authController', function($scope, $auth, $location, $localStorag
     });
 	};
 
+	$scope.getProfile = function() {
+      Account.getProfile()
+        .then(function(response) {
+          $scope.user = response.data;
+        })
+        .catch(function(response) {
+          toastr.error(response.data.message, response.status);
+        });
+    };
+
 });
 
 app.controller('menuController', function($scope, $auth) {
