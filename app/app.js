@@ -56,7 +56,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 
 	$authProvider.github({
 		clientId: '153ea8b8debdbfee9b1d',
-		//responseType: 'token',
+		responseType: 'token',
 		url: '/auth/github',
 		authorizationEndpoint: 'https://github.com/login/oauth/authorize',
 		redirectUri: window.location.origin + '/spa_demo/',
