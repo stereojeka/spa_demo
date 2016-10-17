@@ -1,6 +1,6 @@
 var app = angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource', 'ngStorage']);
 
-app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locationProvider, $localStorage) {
+app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locationProvider) {
 	$stateProvider
 	.state('home', {
 		url: '/home',
@@ -8,15 +8,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 	})
 	.state('profile', {
 		url: '/profile',
-		/*
-		resolve: {
-			"check": function($location){
-				if(!$localStorage.loggedIn){
-					$location.path('/');
-				} 
-			}
-		},
-		*/
 		templateUrl: 'partials/profile.tpl.html'
 	})
 	.state('logout', {
@@ -26,15 +17,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 	})
 	.state('login', {
 		url: '/login',
-		templateUrl: 'partials/login.tpl.html'/*,
-		resolve: {
-			"check": function($location, $localStorage){
-				if($localStorage.loggedIn){
-					$location.path('/');
-				} 
-			}
-		}
-		*/
+		templateUrl: 'partials/login.tpl.html'
 	});
 	$urlRouterProvider.otherwise('/home');
 
