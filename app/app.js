@@ -24,7 +24,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 	})
 	.state('login', {
 		url: '/login',
-		templateUrl: 'partials/login.tpl.html'
+		templateUrl: 'partials/login.tpl.html',
 		resolve: {
 			"check": function($location, $localStorage){
 				if($localStorage.loggedIn){
