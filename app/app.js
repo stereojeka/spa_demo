@@ -116,12 +116,19 @@ app.controller('menuController', function($scope, $localStorage) {
 
 
 app.controller('logoutController', function($location, $localStorage) {
+	if($localStorage.accessToken == null){
+		return;
+	}else{
+		$auth.removeToken();
+		$localStorage.accessToken = null;
+	}
 	if($localStorage.loggedIn){
 		$localStorage.loggedIn = false;
 		$location.path('/login');
 	}else{
 		return;
 	}
+	
 });
 
 app.controller('profileController', function($scope, $auth, Account, $localStorage) {
@@ -137,6 +144,16 @@ app.controller('profileController', function($scope, $auth, Account, $localStora
 		});
 	};
 
+	$scope.updateProfile = function() {
+      Account.updateProfile($scope.user)
+        .then(function() {
+          console.log('Profile has been updated');
+        })
+        .catch(function(response) {
+          console.log(response.data.message, response.status);
+        });
+    };
+
 	$scope.getProfile();
 });
 
@@ -146,7 +163,7 @@ app.factory('Account', function($http, $localStorage) {
 			return $http.get('https://www.googleapis.com/plus/v1/people/me');
 		},
 		updateProfile: function(profileData) {
-			return $http.put('/api/me', profileData);
+			return $http.put('https://www.googleapis.com/plus/v1/people/me', profileData);
 		}
 	};
 });
