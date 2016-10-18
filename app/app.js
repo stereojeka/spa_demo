@@ -63,7 +63,7 @@ app.controller('loginController', function($scope, $location, $localStorage){
 	$scope.submit = function(){
 		if($scope.username == 'admin' && $scope.password == 'admin'){
 			$localStorage.loggedIn = true;
-			$location.path('/profile');
+			$location.path('/editprofile');
 		} else {
 			alert('Wrong stuff!');
 		}
@@ -78,7 +78,7 @@ app.controller('authController', function($scope, $auth, $location, $localStorag
 			console.log('You have successfully signed in with ' + provider + '!');
 			$localStorage.loggedIn = true;
 			$localStorage.accessToken = $auth.getToken();
-			$location.path('/profile');
+			$location.path('/editprofile');
 			console.log($localStorage.accessToken);
 			console.log($auth.isAuthenticated());
 		})
