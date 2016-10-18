@@ -8,7 +8,25 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 	})
 	.state('profile', {
 		url: '/profile',
-		templateUrl: 'partials/profile.tpl.html'
+		templateUrl: 'partials/profile.tpl.html',
+		resolve: {
+			"check": function($location, $localStorage){
+				if(!$localStorage.loggedIn){
+					$location.path('/home');
+				} 
+			}
+		}
+	})
+	.state('editprofile', {
+		url: '/editprofile',
+		templateUrl: 'partials/editprofile.tpl.html',
+		resolve: {
+			"check": function($location, $localStorage){
+				if(!$localStorage.loggedIn){
+					$location.path('/home');
+				} 
+			}
+		}
 	})
 	.state('logout', {
 		url: '/logout',
@@ -20,22 +38,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 		templateUrl: 'partials/login.tpl.html'
 	});
 	$urlRouterProvider.otherwise('/home');
-
-	// Facebook
-	$authProvider.facebook({
-		clientId: '1336322916420295',
-		responseType: 'token',
-		name: 'facebook',
-		url: '/auth/facebook',
-		authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-		redirectUri: window.location.origin + '/spa_demo/',
-		requiredUrlParams: ['display', 'scope'],
-		scope: ['email'],
-		scopeDelimiter: ',',
-		display: 'popup',
-		oauthType: '2.0',
-		popupOptions: { width: 580, height: 400 }
-	});
 
 	// Google
 	$authProvider.google({
@@ -52,19 +54,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 		display: 'popup',
 		oauthType: '2.0',
 		popupOptions: { width: 452, height: 633 }
-	});
-
-	$authProvider.github({
-		clientId: '153ea8b8debdbfee9b1d',
-		responseType: 'token',
-		url: '/auth/github',
-		authorizationEndpoint: 'https://github.com/login/oauth/authorize',
-		redirectUri: window.location.origin + '/spa_demo/',
-		optionalUrlParams: ['scope'],
-		scope: ['user:email'],
-		scopeDelimiter: ' ',
-		oauthType: '2.0',
-		popupOptions: { width: 1020, height: 618 }
 	});
 
 });
@@ -130,11 +119,14 @@ app.controller('logoutController', function($location, $localStorage) {
 	
 });
 
-app.controller('profileController', function($scope, $auth, Account, $localStorage) {
+app.controller('profileController', function($scope, $auth, Account, $localStorage, $location) {
 
 	$scope.getProfile = function() {
 		Account.getProfile()
 		.then(function(response) {
+			$localStorage.displayName = $scope.user.displayName;
+			$localStorage.tagline = $scope.user.tagline;
+			$localStorage.imgUrl = $scope.user.image.url;
 			$scope.user = response.data;
 			console.log($scope.user);
 		})
@@ -144,14 +136,11 @@ app.controller('profileController', function($scope, $auth, Account, $localStora
 	};
 
 	$scope.updateProfile = function() {
-      Account.updateProfile($scope.user)
-        .then(function() {
-          console.log('Profile has been updated');
-        })
-        .catch(function(response) {
-          console.log(response.data.message, response.status);
-        });
-    };
+		$localStorage.displayName = $scope.user.displayName;
+		$localStorage.tagline = $scope.user.tagline;
+		$localStorage.imgUrl = $scope.user.image.url;
+		location.path('/profile');
+	};
 
 	$scope.getProfile();
 });
@@ -160,9 +149,6 @@ app.factory('Account', function($http, $localStorage) {
 	return {
 		getProfile: function() {
 			return $http.get('https://www.googleapis.com/plus/v1/people/me');
-		},
-		updateProfile: function(profileData) {
-			return $http.put('https://www.googleapis.com/plus/v1/people/me', profileData);
 		}
 	};
 });

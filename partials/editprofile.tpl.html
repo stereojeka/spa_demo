@@ -1,0 +1,23 @@
+<div class="container" ng-controller="profileController">
+  <div class="panel panel-default">
+    <div class="panel-heading">Profile</div>
+    <div class="panel-body">
+      <legend>Edit My Profile</legend>
+      <form method="post" ng-submit="updateProfile()">
+        <div class="form-group">
+          <label class="control-label">Profile Picture</label>
+          <img class="profile-picture" ng-src="{{user.image.url || 'https://placehold.it/100x100'}}">
+        </div>
+        <div class="form-group">
+          <label class="control-label">Display Name</label>
+          <input type="text" class="form-control" ng-model="user.displayName" />
+        </div>
+        <div class="form-group">
+          <label class="control-label">About you</label>
+          <input type="text" class="form-control" ng-model="user.tagline" />
+        </div>
+        <button class="btn btn-lg btn-success">Update Information</button>
+      </form>
+    </div>
+  </div>
+</div>
