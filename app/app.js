@@ -117,7 +117,6 @@ app.controller('menuController', function($scope, $localStorage) {
 
 app.controller('logoutController', function($location, $localStorage) {
 	if($localStorage.accessToken == null){
-		return;
 	}else{
 		$auth.removeToken();
 		$localStorage.accessToken = null;
