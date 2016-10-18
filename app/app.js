@@ -124,10 +124,10 @@ app.controller('profileController', function($scope, $auth, Account, $localStora
 	$scope.getProfile = function() {
 		Account.getProfile()
 		.then(function(response) {
+			$scope.user = response.data;
 			$localStorage.displayName = $scope.user.displayName;
 			$localStorage.tagline = $scope.user.tagline;
 			$localStorage.imgUrl = $scope.user.image.url;
-			$scope.user = response.data;
 			console.log($scope.user);
 		})
 		.catch(function(response) {

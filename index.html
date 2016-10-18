@@ -11,7 +11,7 @@
 	<div ng-controller="menuController" class="container topMenu" >
 		<a ui-sref="home">Home</a>
 		<a ng-if="isLoggedIn()" href="/spa_demo/#/profile">Profile</a>
-		<a ng-if="isLoggedIn()" href="/spa_demo/#/editprofile">Profile</a>
+		<a ng-if="isLoggedIn()" href="/spa_demo/#/editprofile">Edit Profile</a>
 		<ul ng-if="!isLoggedIn()" class="pull-right" style="list-style: none; display: inline-block;">
 			<li><a href="/spa_demo/#/login">Login</a></li>
 		</ul>
