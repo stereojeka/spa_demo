@@ -130,7 +130,7 @@ app.controller('logoutController', function($location, $localStorage) {
 	}	
 });
 
-app.controller('profileController', function($scope, $auth, Account, $localStorage, $location) {
+app.controller('profileController', function($scope, $auth, Account, $localStorage) {
 
 	$scope.getProfile = function() {
 		Account.getProfile()
@@ -150,7 +150,6 @@ app.controller('profileController', function($scope, $auth, Account, $localStora
 		$localStorage.displayName = $scope.user.displayName;
 		$localStorage.tagline = $scope.user.tagline;
 		$localStorage.imgUrl = $scope.user.image.url;
-		location.path('/profile');
 	};
 
 	$scope.getProfile();

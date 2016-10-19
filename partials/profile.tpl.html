@@ -3,9 +3,9 @@
     <div class="panel-heading">Profile</div>
     <div class="panel-body">
       <legend>My Profile</legend>
-      <img class="profile-picture" ng-src="{{ imgUrl || 'https://placehold.it/100x100'}}">
-      <h3>{{ displayName }}</h3>
-      <h4>{{ tagline }}</h4>
+      <img class="profile-picture" ng-src="{{ $localStorage.imgUrl || 'https://placehold.it/100x100'}}">
+      <h3>{{ $localStorage.displayName }}</h3>
+      <h4>{{ $localStorage.tagline }}</h4>
     </div>
   </div>
 </div>
