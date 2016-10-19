@@ -3,7 +3,7 @@
     <div class="panel-heading">Profile</div>
     <div class="panel-body">
       <legend>My Profile</legend>
-      <img class="profile-picture" ng-src="{{ imgUrl || 'https://placehold.it/100x100'}}">
+      <img class="profile-picture" ng-src="{{ user.image.url || 'https://placehold.it/100x100'}}">
       <h3>{{ userName }}</h3>
       <h4>{{ userStatus }}</h4>
     </div>
