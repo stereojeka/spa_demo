@@ -225,6 +225,7 @@ app.controller('foodController', function ($scope, $filter, nixApi) {
 	$scope.apiResponse = null;
 
 	$scope.estimate = function estimate() {
+		localStorage.clear();
 		estimate.error = null;
 		$scope.apiResponse = null;
 		nixApi.natural($scope.data)
