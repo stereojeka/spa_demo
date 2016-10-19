@@ -40,6 +40,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 	$urlRouterProvider.otherwise('/home');
 
 	// Facebook
+	/*
 	$authProvider.facebook({
 		clientId: '1336322916420295',
 		responseType: 'token',
@@ -54,6 +55,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 		oauthType: '2.0',
 		popupOptions: { width: 580, height: 400 }
 	});
+	*/
 
 	// Google
 	$authProvider.google({
