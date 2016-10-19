@@ -5,7 +5,7 @@ var app = angular.module('mainApp', [
 	'ngStorage',
 	'nix.api']);
 
-app.config(function ($stateProvider, $urlRouterProvider, $authProvider,$locationProvider, nixApiProvider, $localStorage) {
+app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locationProvider, nixApiProvider) {
 	$stateProvider
 	.state('home', {
 		url: '/home',
@@ -91,7 +91,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider,$location
 	});
 
 	nixApiProvider.setApiCredentials('64692575', '119755abced70715fd7a361548a6fabf');
-	nixApiProvider.Authorization($localStorage.accessToken);
 
 });
 
@@ -226,7 +225,7 @@ app.controller('foodController', function ($scope, $filter, nixApi) {
 	$scope.apiResponse = null;
 
 	$scope.estimate = function estimate() {
-		//localStorage.clear();
+		localStorage.clear();
 		estimate.error = null;
 		$scope.apiResponse = null;
 		nixApi.natural($scope.data)
