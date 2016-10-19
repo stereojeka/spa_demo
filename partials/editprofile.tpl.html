@@ -3,7 +3,7 @@
     <div class="panel-heading">Profile</div>
     <div class="panel-body">
       <legend>Edit My Profile</legend>
-      <form method="post" ng-submit="updateProfile()">
+      <form method="/">
         <div class="form-group">
           <label class="control-label">Profile Picture</label>
           <img class="profile-picture" ng-src="{{user.image.url || 'https://placehold.it/100x100'}}">
@@ -16,7 +16,7 @@
           <label class="control-label">About you</label>
           <input type="text" class="form-control" ng-model="user.tagline" />
         </div>
-        <button class="btn btn-lg btn-success">Update Information</button>
+        <button class="btn btn-lg btn-success" ng-click="updateProfile()">Update Information</button>
       </form>
     </div>
   </div>
