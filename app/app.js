@@ -92,7 +92,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider,
 	});
 
 	nixApiProvider.setApiCredentials('64692575', '119755abced70715fd7a361548a6fabf');
-	nixApiProvider.Authorization($localStorage.accessToken);
+	//nixApiProvider.Authorization($localStorage.accessToken);
 
 });
 
