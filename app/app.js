@@ -147,9 +147,9 @@ app.controller('profileController', function($scope, $auth, Account, $localStora
 	};
 
 	$scope.updateProfile = function() {
-		$localStorage.displayName = $scope.user.displayName;
-		$localStorage.tagline = $scope.user.tagline;
-		$localStorage.imgUrl = $scope.user.image.url;
+		$scope.userName = $localStorage.displayName;
+		$scope.userStatus = $localStorage.tagline;
+		$scope.imgUrl = $localStorage.imgUrl;
 	};
 
 	$scope.getProfile();
