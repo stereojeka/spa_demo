@@ -16,6 +16,7 @@
 			<li><a href="/spa_demo/#/login">Login</a></li>
 		</ul>
 		<ul ng-if="isLoggedIn()" class="pull-right" style="list-style: none; display: inline-block;">
+			<a ui-sref="food">Food</a></li>
 			<a ui-sref="logout">Logout</a></li>
 		</ul>
 	</div>
@@ -26,8 +27,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
 	<script src="https://code.angularjs.org/1.5.8/angular-route.min.js"></script>
 	<script src="js/satellizer.min.js"></script>
+	<script src="js/angular-nutritionix-api.min.js"></script>
 	<script src="js/angular-resource.js"></script>
-	<script src="js/angular-sanitize.js"></script>
 	<script src="js/angular-ui-router.js"></script>
 	<script src="app/app.js"></script>
 </body>

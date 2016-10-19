@@ -1,6 +1,11 @@
-var app = angular.module('mainApp', ['ui.router', 'satellizer', 'ngResource', 'ngStorage']);
+var app = angular.module('mainApp', [
+	'ui.router',
+ 	'satellizer',
+  	'ngResource',
+   	'ngStorage',
+   	'nix.api']);
 
-app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locationProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locationProvider, nixApiProvider) {
 	$stateProvider
 	.state('home', {
 		url: '/home',
@@ -20,6 +25,17 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 	.state('editprofile', {
 		url: '/editprofile',
 		templateUrl: 'partials/editprofile.tpl.html',
+		resolve: {
+			"check": function($location, $localStorage){
+				if(!$localStorage.loggedIn){
+					$location.path('/home');
+				} 
+			}
+		}
+	})
+	.state('food', {
+		url: '/food',
+		templateUrl: 'partials/food.tpl.html',
 		resolve: {
 			"check": function($location, $localStorage){
 				if(!$localStorage.loggedIn){
@@ -73,6 +89,8 @@ app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locatio
 		oauthType: '2.0',
 		popupOptions: { width: 452, height: 633 }
 	});
+
+	nixApiProvider.setApiCredentials('64692575', '119755abced70715fd7a361548a6fabf');
 
 });
 
@@ -139,7 +157,6 @@ app.controller('profileController', function($scope, $auth, Account, $localStora
 			$localStorage.displayName = $scope.user.displayName;
 			$localStorage.tagline = $scope.user.tagline;
 			$localStorage.imgUrl = $scope.user.image.url;
-			console.log($scope.user);
 		})
 		.catch(function(response) {
 			console.log(response.data.message, response.status);
