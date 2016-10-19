@@ -5,7 +5,8 @@ var app = angular.module('mainApp', [
 	'ngStorage',
 	'nix.api']);
 
-app.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locationProvider, nixApiProvider) {
+app.config(function ($stateProvider, $urlRouterProvider, $authProvider,
+							 $locationProvider, nixApiProvider, $localStorage) {
 	$stateProvider
 	.state('home', {
 		url: '/home',
