@@ -121,18 +121,11 @@ app.controller('menuController', function($scope, $localStorage) {
 
 
 app.controller('logoutController', function($location, $localStorage) {
-	if($localStorage.accessToken == null){
-	}else{
-		$auth.removeToken();
-		$localStorage.accessToken = null;
-	}
 	if($localStorage.loggedIn){
 		$localStorage.loggedIn = false;
+		window.localStorage.clear();
 		$location.path('/login');
-	}else{
-		return;
-	}
-	
+	}	
 });
 
 app.controller('profileController', function($scope, $auth, Account, $localStorage, $location) {
