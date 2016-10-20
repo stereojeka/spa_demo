@@ -6,8 +6,7 @@
 		'satellizer',
 		'ngResource',
 		'ngStorage',
-		'nix.api']);
-
+		'nix.api'])
 	.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locationProvider, nixApiProvider) {
 		$stateProvider
 		.state('home', {
