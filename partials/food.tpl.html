@@ -1,7 +1,7 @@
 <div class="container" ng-controller="foodController">
     <div class="row form-group">
         <div class="col-lg-12">
-            <textarea ng-model="data" class="form-control" rows="10"
+            <textarea ng-model="data" class="form-control" rows="7"
                       placeholder="Enter products to estimate separated by the newline">
             </textarea>
         </div>
@@ -23,11 +23,11 @@
                     </th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody ng-model="product">
                 <tr ng-repeat="estimation in apiResponse.results">
                     <td ng-repeat="column in columns">
                         {{column.valueField ? getProperty(estimation, column.valueField) : column.getValue(estimation)}}
-                        <button class="btn btn-primary pull-right" ng-if="column.header == 'NDB number'" ng-click="">Add to food log</button>
+                        <button class="btn btn-success pull-right" ng-if="column.header == 'NDB number'" ng-click="">Add to food log</button>
                     </td>
                 </tr>
                 </tbody>

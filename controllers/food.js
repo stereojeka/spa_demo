@@ -2,7 +2,7 @@ angular
 .module('mainApp')
 .controller('foodController', function ($scope, $filter, nixApi) {
 
-	var foodmodel = {
+	$scope.foodmodel = {
 		product: [{ 
 			qty: 20,
 			measure: 'g',
@@ -83,6 +83,10 @@ angular
 		return current;
 	};
 
+	$scope.addToFoodLog = function() {
 
+		console.log($scope.product);
+
+	};
 
 });
