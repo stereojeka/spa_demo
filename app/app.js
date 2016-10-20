@@ -155,7 +155,7 @@ app.controller('editProfileController', function($scope, $auth, Account, $localS
 		.then(function(response) {
 			$scope.user = response.data;
 			$localStorage.localdisplayName = $scope.user.displayName;
-			$localStorage.localtagline = $scope.user.tagline;
+			$localStorage.localtagline = $scope.user.displayName;
 			$localStorage.localimgUrl = $scope.user.image.url;
 		})
 		.catch(function(response) {
@@ -163,18 +163,24 @@ app.controller('editProfileController', function($scope, $auth, Account, $localS
 		});
 	};
 
+	$scope.updateProfile = function() {
+		$scope.user.displayName = $localStorage.localdisplayName;
+		$scope.user.displayName = $localStorage.localtagline;
+		$scope.image.url = $localStorage.localimgUrl;
+	};
+
 	$scope.getProfile();
 });
 
 app.controller('profileController', function($scope, $auth, Account, $localStorage) {
 
-	$scope.updateProfile = function() {
+	$scope.loadProfile = function() {
 		$scope.localdisplayName = $localStorage.localdisplayName;
 		$scope.localtagline = $localStorage.localtagline;
 		$scope.localimgUrl = $localStorage.localimgUrl;
 	};
 
-	$scope.updateProfile();
+	$scope.loadProfile();
 });
 
 app.factory('Account', function($http, $localStorage) {
