@@ -11,7 +11,7 @@ angular
 			.then(function(response) {
 				$scope.user = response.data;
 				$localStorage.localdisplayName = $scope.user.displayName;
-				$localStorage.localtagline = $scope.user.displayName;
+				$localStorage.localtagline = $scope.user.localtagline;
 				$localStorage.localimgUrl = $scope.user.image.url;
 			})
 			.catch(function(response) {
