@@ -8,7 +8,7 @@
     </div>
     <div class="row form-group">
     <div class="col-lg-12">
-            <button type="button" class="btn btn-success pull-right" ng-click="estimate()">
+            <button type="button" class="btn btn-success btn-block pull-right" ng-click="estimate()">
                 Estimate
             </button>
         </div>
@@ -27,7 +27,7 @@
                 <tr ng-repeat="estimation in apiResponse.results">
                     <td ng-repeat="column in columns">
                         {{column.valueField ? getProperty(estimation, column.valueField) : column.getValue(estimation)}}
-                        <button class="btn btn-primary pull-right" ng-if="columns.valueField == 'NDB number'" ng-click="">Add to food log</button>
+                        <button class="btn btn-primary pull-right" ng-if="column.header == 'NDB number'" ng-click="">Add to food log</button>
                     </td>
                 </tr>
                 </tbody>
