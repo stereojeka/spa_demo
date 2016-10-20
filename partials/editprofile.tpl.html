@@ -10,11 +10,11 @@
         </div>
         <div class="form-group">
           <label class="control-label">Display Name</label>
-          <input type="text" class="form-control" ng-model="user.displayName" />
+          <input type="text" class="form-control" ng-model="user.displayName" ng-model="userName"/>
         </div>
         <div class="form-group">
           <label class="control-label">About you</label>
-          <input type="text" class="form-control" ng-model="user.tagline" />
+          <input type="text" class="form-control" ng-model="user.tagline" ng-model="userStatus"/>
         </div>
         <button class="btn btn-lg btn-success" ng-click="updateProfile()">Update Information</button>
       </form>
