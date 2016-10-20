@@ -1,6 +1,17 @@
 angular
 .module('mainApp')
 .controller('foodController', function ($scope, $filter, nixApi) {
+
+	var foodmodel = {
+		product: [{ 
+			qty: 20,
+			measure: 'g',
+			food: 'tomato',
+			Energy: '3.60 kcal',
+			NDB_number: 11529
+		}]
+	}; 
+
 	$scope.columns = [
 	{
 		header:     'qty',
@@ -70,4 +81,7 @@ angular
 
 		return current;
 	};
+
+
+
 });
