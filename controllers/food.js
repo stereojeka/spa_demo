@@ -62,6 +62,7 @@ angular
 		nixApi.natural($scope.data)
 		.success(function (apiResponse) {
 			$scope.apiResponse = apiResponse;
+			console.log($scope.apiResponse);
 		})
 		.error(function (error) {
 			estimate.error = error;
