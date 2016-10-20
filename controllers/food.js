@@ -32,6 +32,7 @@ angular
 			if (estimation.nutrients) {
 				result = $filter('nutrient')(estimation.nutrients, 208);
 				if (result) {
+					console.log($filter('number')(result.value, 2).toString() + ' ' + result.unit);
 					return $filter('number')(result.value, 2).toString() + ' ' + result.unit;
 				}
 			}
@@ -62,7 +63,6 @@ angular
 		nixApi.natural($scope.data)
 		.success(function (apiResponse) {
 			$scope.apiResponse = apiResponse;
-			console.log($scope.apiResponse);
 		})
 		.error(function (error) {
 			estimate.error = error;
@@ -79,6 +79,8 @@ angular
 				break;
 			}
 		}
+
+		console.log(current);
 
 		return current;
 	};
