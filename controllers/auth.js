@@ -1,5 +1,5 @@
-angular.module('mainApp')
-.controller('authController', function($scope, $auth, $location, $localStorage, Account){
+var app = angular.module('mainApp');
+app.controller('authController', function($scope, $auth, $location, $localStorage, Account){
 
 	$scope.authenticate = function(provider) {
 		$auth.authenticate(provider)
