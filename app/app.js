@@ -148,28 +148,33 @@ app.controller('logoutController', function($location, $localStorage) {
 	}	
 });
 
-app.controller('profileController', function($scope, $auth, Account, $localStorage) {
+app.controller('editProfileController', function($scope, $auth, Account, $localStorage) {
 
 	$scope.getProfile = function() {
 		Account.getProfile()
 		.then(function(response) {
 			$scope.user = response.data;
-			$localStorage.displayName = $scope.user.displayName;
-			$localStorage.tagline = $scope.user.tagline;
-			$localStorage.imgUrl = $scope.user.image.url;
+			$localStorage.localdisplayName = $scope.user.displayName;
+			$localStorage.localtagline = $scope.user.tagline;
+			$localStorage.localimgUrl = $scope.user.image.url;
 		})
 		.catch(function(response) {
 			console.log(response.data.message, response.status);
 		});
 	};
 
+	$scope.getProfile();
+});
+
+app.controller('profileController', function($scope, $auth, Account, $localStorage) {
+
 	$scope.updateProfile = function() {
-		$scope.user.displayName = $localStorage.displayName;
-		$scope.user.tagline = $localStorage.tagline;
-		$scope.user.image.url = $localStorage.imgUrl;
+		$scope.localdisplayName = $localStorage.localdisplayName;
+		$scope.localtagline = $localStorage.localtagline;
+		$scope.localimgUrl = $localStorage.localimgUrl;
 	};
 
-	$scope.getProfile();
+	$scope.updateProfile();
 });
 
 app.factory('Account', function($http, $localStorage) {
