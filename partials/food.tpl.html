@@ -23,7 +23,7 @@
                     </th>
                 </tr>
                 </thead>
-                <tbody ng-model="product">
+                <tbody>
                 <tr ng-repeat="estimation in apiResponse.results">
                     <td ng-repeat="column in columns">
                         {{column.valueField ? getProperty(estimation, column.valueField) : column.getValue(estimation)}}

@@ -85,7 +85,7 @@ angular
 
 	$scope.addToFoodLog = function() {
 
-		console.log($scope.product);
+		console.log(column.valueField);
 
 	};
 
