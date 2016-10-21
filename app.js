@@ -93,7 +93,7 @@
 		});
 
 		nixApiProvider.setApiCredentials('64692575', '119755abced70715fd7a361548a6fabf');
-
+		nixApiProvider.setHttpConfig('Origin, X-Requested-With, Content-Type, Accept, Authorization');
 	});
 
 })();
