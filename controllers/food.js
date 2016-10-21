@@ -4,11 +4,8 @@ angular
 
 	$scope.foodmodel = {
 		product: [{ 
-			qty: 20,
-			measure: 'g',
 			food: 'tomato',
-			Energy: '3.60 kcal',
-			NDB_number: 11529
+			Energy: '3.60 kcal'
 		}]
 	}; 
 

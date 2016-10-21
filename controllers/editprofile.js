@@ -4,7 +4,7 @@ angular
 
 	$scope.getProfile = function() {
 		if($localStorage.accessToken == null){
-			$localStorage.localdisplayName = $scope.userName + '(' + $scope.user.tagline + ')';
+			$localStorage.localdisplayName = $scope.userName + '(' + $scope.userStatus + ')';
 		}else{
 			Account.getProfile()
 			.then(function(response) {
