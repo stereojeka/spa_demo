@@ -1,13 +1,11 @@
+var products = { 
+	food: 'tomato',
+	Energy: '3.60 kcal'
+};
+
 angular
 .module('mainApp')
 .controller('foodController', function ($scope, $filter, nixApi, $localStorage) {
-
-	$localStorage.foodmodel = {
-		products: [{ 
-			food: 'tomato',
-			Energy: '3.60 kcal'
-		}]
-	}; 
 
 	$scope.columns = [
 	{
@@ -86,8 +84,8 @@ angular
 
 	$scope.addToFoodLog = function() {
 
-		console.log(column.valueField);
-
+		$localStorage.products = products;
+		console.log($localStorage.products);
 	};
 
 });
