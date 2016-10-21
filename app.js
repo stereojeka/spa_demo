@@ -7,7 +7,8 @@
 		'ngResource',
 		'ngStorage',
 		'nix.api'])
-	.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locationProvider, nixApiProvider) {
+	.config(function ($stateProvider, $urlRouterProvider, $authProvider,
+				$localStorage, $locationProvider, nixApiProvider) {
 		$stateProvider
 		.state('home', {
 			url: '/home',
@@ -94,7 +95,7 @@
 
 		var apiConfig = {
                 headers : {
-                    'Authorization': $localStorage.accessToken;
+                    'Authorization': $localStorage.accessToken
                 }
             }
 
