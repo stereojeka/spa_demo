@@ -92,17 +92,13 @@
 			popupOptions: { width: 452, height: 633 }
 		});
 
-		var apiConfig = {
-                headers : {
-                    'Authorization': $localStorage.accessToken
-                }
-            }
-
 		nixApiProvider.setApiCredentials('64692575', '119755abced70715fd7a361548a6fabf');
-		nixApiProvider.setHttpConfig(apiConfig);
+		nixApiProvider.setHttpConfig(
+			headers : {
+				'Authorization': $localStorage.accessToken
+			});
 	});
 
 })();
 
 
-	
