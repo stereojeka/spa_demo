@@ -2,7 +2,7 @@ angular
 .module('mainApp')
 .controller('foodController', function ($scope, $filter, nixApi) {
 
-	$scope.foodmodel = {
+	$localStorage.foodmodel = {
 		product: [{ 
 			food: 'tomato',
 			Energy: '3.60 kcal'
