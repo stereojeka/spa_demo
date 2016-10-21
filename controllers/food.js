@@ -1,6 +1,6 @@
 angular
 .module('mainApp')
-.controller('foodController', function ($scope, $filter, nixApi) {
+.controller('foodController', function ($scope, $filter, nixApi, $localStorage) {
 
 	$localStorage.foodmodel = {
 		product: [{ 
