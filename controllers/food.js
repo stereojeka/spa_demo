@@ -54,7 +54,7 @@ angular
 	$scope.apiResponse = null;
 
 	$scope.estimate = function estimate() {
-		localStorage.clear();
+		//localStorage.clear();
 		estimate.error = null;
 		$scope.apiResponse = null;
 		nixApi.natural($scope.data)
