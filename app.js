@@ -7,8 +7,7 @@
 		'ngResource',
 		'ngStorage',
 		'nix.api'])
-	.config(function ($stateProvider, $urlRouterProvider, $authProvider,
-				$localStorage, $locationProvider, nixApiProvider) {
+	.config(function ($stateProvider, $urlRouterProvider, $authProvider, $locationProvider, nixApiProvider) {
 		$stateProvider
 		.state('home', {
 			url: '/home',
