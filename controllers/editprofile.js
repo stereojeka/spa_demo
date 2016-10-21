@@ -4,12 +4,12 @@ angular
 
 	$scope.getProfile = function() {
 		if($localStorage.accessToken == null){
-			$localStorage.localdisplayName = $scope.userName + '(' + $scope.userStatus + ')';
+			$localStorage.localdisplayName = $scope.userName + '(' + $scope.user.tagline + ')';
 		}else{
 			Account.getProfile()
 			.then(function(response) {
 				$scope.user = response.data;
-				$localStorage.localdisplayName = $scope.user.displayName + '(' + $scope.user.localtagline + ')';
+				$localStorage.localdisplayName = $scope.user.displayName + '(' + $scope.user.tagline + ')';
 				$localStorage.localimgUrl = $scope.user.image.url;
 			})
 			.catch(function(response) {
@@ -23,7 +23,7 @@ angular
 		if($localStorage.accessToken == null){
 			$scope.userName = $localStorage.localdisplayName;
 		}else{
-			$localStorage.localdisplayName = $scope.user.displayName + '(' + $scope.user.localtagline + ')';
+			$localStorage.localdisplayName = $scope.user.displayName + '(' + $scope.user.tagline + ')';
 			$localStorage.localimgUrl = $scope.user.image.url;
 		}	
 	};
