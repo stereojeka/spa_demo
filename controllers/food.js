@@ -78,15 +78,24 @@ angular
 		return current;
 	};
 
+	$scope.getValue = function (estimation) {
+		var result;
+		if (estimation.nutrients) {
+			result = $filter('nutrient')(estimation.nutrients, 208);
+			if (result) {
+				return $filter('number')(result.value, 2).toString() + ' ' + result.unit;
+			}
+		}
+	};
+
 	$scope.addToFoodLog = function(index) {
 		$localStorage.foodmodel = foodmodel;
 		$localStorage.response = $scope.apiResponse;
 		console.log($localStorage.response);
 		$localStorage.foodmodel.products.push({
 			food: $localStorage.response.results[index].parsed_query.food,
-			Energy: '228'
+			Energy: getValue($localStorage.response.results[index])
 		})
-
 		console.log($localStorage.foodmodel.products);
 	};
 
