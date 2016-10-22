@@ -55,8 +55,7 @@
 						$location.path('/home');
 					} 
 				}
-			},
-			controller: 'gmapController'
+			}
 		})
 		.state('logout', {
 			url: '/logout',
