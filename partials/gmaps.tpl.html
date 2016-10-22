@@ -1,36 +1,14 @@
-<script src="http://maps.google.com/maps/api/js?sensor=false">
-</script>
-<script type="text/javascript">
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position){
-        var latitude = position.coords.latitude;
-        var longitude = position.coords.longitude;
-        var coords = new google.maps.LatLng(latitude, longitude);
-        var mapOptions = {
-            zoom: 15,
-            center: coords,
-            mapTypeControl: true,
-            navigationControlOptions: {
-                style: google.maps.NavigationControlStyle.SMALL
-            },
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            map = new google.maps.Map(
-                document.getElementById("mapContainer"), mapOptions
-                );
-            var marker = new google.maps.Marker({
-                    position: coords,
-                    map: map,
-                    title: "Your current location!"
-            });
- 
+<div id="map"></div>
+    <script>
+      function initMap() {
+        // Create a map object and specify the DOM element for display.
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          scrollwheel: false,
+          zoom: 8
         });
-    }else {
-        alert("Geolocation API не поддерживается в вашем браузере");
-    }
-</script>
-<div class="container"></div>
-<div id="wrap">
-	<h2>HTML5 Geolocation и Google Maps</h2>
-	<div id="mapContainer"></div>
-</div>
+      }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCISWOwsx3D6NOgLSsCPlNW2bQVh0h-oww&callback=initMap"
+    async defer></script>
