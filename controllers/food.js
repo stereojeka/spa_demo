@@ -1,5 +1,5 @@
 var foodmodel = { 
-	products: [{ food: 'tomato', Energy: '3.60 kcal' }]
+	products: [{ food: 'water', Energy: '0.00 kcal' }]
 };
 
 angular
@@ -95,8 +95,13 @@ angular
 		$localStorage.foodmodel.products.push({
 			food: $localStorage.response.results[index].parsed_query.food,
 			Energy: $scope.getValue($localStorage.response.results[index])
-		})
+		});
 		console.log($localStorage.foodmodel.products);
 	};
 
+	$scope.deleteFood = function(index){
+		$scope.foodmodel.products.splice(index, 1);
+	};
+
+	$scope.foodmodel = $localStorage.foodmodel;
 });
