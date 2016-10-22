@@ -24,17 +24,7 @@
 	</div>
 	<div ui-view></div>
 	
-	<script type="text/javascript">
 
-		var map;
-		function initMap() {
-			map = new google.maps.Map(document.getElementById('map'), {
-				center: {lat: -34.397, lng: 150.644},
-				zoom: 8
-			});
-		}
-
-	</script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
@@ -54,7 +44,6 @@
 	<script src="controllers/menu.js"></script>
 	<script src="controllers/profile.js"></script>
 	<script src="services/account.js"></script>
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdXwfZB8dbfL2qxIZ9IbJJY-WuQfZaeIY&callback=initMap">
-	</script>
+	
 </body>
 </html>
