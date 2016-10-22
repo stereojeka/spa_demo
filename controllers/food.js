@@ -80,10 +80,11 @@ angular
 	};
 
 	$scope.addToFoodLog = function(index) {
-		$localStorage.products = $scope.apiResponse;
-		console.log(index);
-		console.log($localStorage.products);
-		console.log($localStorage.products.results[index].parsed_query.food);
+		//$localStorage.products = $scope.apiResponse;
+		$localStorage.products.food = $scope.apiResponse.results[index].parsed_query.food;
+		$localStorage.products.Energy = getValue($scope.apiResponse.results);
+		console.log($localStorage.products.food);
+		console.log($localStorage.Energy);
 	};
 
 });
