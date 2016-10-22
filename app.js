@@ -46,6 +46,18 @@
 				}
 			}
 		})
+		.state('maps', {
+			url: '/maps',
+			templateUrl: 'partials/gmaps.tpl.html',
+			resolve: {
+				"check": function($location, $localStorage){
+					if(!$localStorage.loggedIn){
+						$location.path('/home');
+					} 
+				}
+			},
+			controller: 'gmapController'
+		})
 		.state('logout', {
 			url: '/logout',
 			template: null,

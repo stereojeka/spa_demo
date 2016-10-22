@@ -17,6 +17,7 @@
 			<li><a href="/spa_demo/#/login">Login</a></li>
 		</ul>
 		<ul ng-if="isLoggedIn()" class="pull-right" style="list-style: none; display: inline-block;">
+			<a ui-sref="maps">Maps</a></li>
 			<a ui-sref="food">Food</a></li>
 			<a ui-sref="logout">Logout</a></li>
 		</ul>
@@ -38,8 +39,11 @@
 	<script src="controllers/food.js"></script>
 	<script src="controllers/login.js"></script>
 	<script src="controllers/logout.js"></script>
+	<script src="controllers/gmaps.js"></script>
 	<script src="controllers/menu.js"></script>
 	<script src="controllers/profile.js"></script>
 	<script src="services/account.js"></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCISWOwsx3D6NOgLSsCPlNW2bQVh0h-oww&callback=initMap"
+    async defer></script>
 </body>
 </html>

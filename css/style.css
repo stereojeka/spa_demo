@@ -60,3 +60,14 @@ button.fa-auth {
 	color: #fff !important;
 }
 
+#wrap{
+	width: 800px;	
+	margin: 0 auto;		
+}
+
+#mapContainer {
+	position:relative;
+    height: 500px;
+    width: 800px;
+	border:10px solid #eaeaea;	
+}
