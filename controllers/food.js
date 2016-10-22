@@ -27,7 +27,7 @@ angular
 			if (estimation.nutrients) {
 				result = $filter('nutrient')(estimation.nutrients, 208);
 				if (result) {
-					console.log($filter('number')(result.value, 2).toString() + ' ' + result.unit);
+					//console.log($filter('number')(result.value, 2).toString() + ' ' + result.unit);
 					return $filter('number')(result.value, 2).toString() + ' ' + result.unit;
 				}
 			}
@@ -53,8 +53,8 @@ angular
 
 	$scope.estimate = function estimate() {
 		//localStorage.clear();
-		localStorage.removeItem("google_state");
-		localStorage.removeItem("satellizer_token");
+		//localStorage.removeItem("google_state");
+		//localStorage.removeItem("satellizer_token");
 		estimate.error = null;
 		$scope.apiResponse = null;
 		nixApi.natural($scope.data)
@@ -76,8 +76,6 @@ angular
 				break;
 			}
 		}
-
-		console.log(current);
 
 		return current;
 	};

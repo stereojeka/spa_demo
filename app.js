@@ -93,6 +93,17 @@
 		});
 
 		nixApiProvider.setApiCredentials('64692575', '119755abced70715fd7a361548a6fabf');
+		nix.Api('/estimated-nutrition/bulk', 
+		{
+			method:  'GET',
+			url:     apiEndpoint + endpoint,
+			headers: {
+				'X-APP-ID':  credentials.appId,
+				'X-APP-KEY': credentials.appKey,
+				'Authorization': $localStorage.accessToken
+			},
+			params:  {}
+		});
 
 	});
 
