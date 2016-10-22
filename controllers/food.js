@@ -1,6 +1,5 @@
-var products = { 
-	food: 'tomato',
-	Energy: '3.60 kcal'
+var foodmodel = { 
+	products: [{ food: 'tomato', Energy: '3.60 kcal' }]
 };
 
 angular
@@ -80,11 +79,15 @@ angular
 	};
 
 	$scope.addToFoodLog = function(index) {
-		//$localStorage.products = $scope.apiResponse;
-		$localStorage.products.food = $scope.apiResponse.results[index].parsed_query.food;
-		$localStorage.products.Energy = getValue($scope.apiResponse.results);
-		console.log($localStorage.products.food);
-		console.log($localStorage.Energy);
+		$localStorage.foodmodel = foodmodel;
+		$localStorage.response = $scope.apiResponse;
+
+		$localStorage.foodmodel.products.push({
+			food: $localStorage.response.results[index].parsed_query.food,
+			Energy: getValue($scope.apiResponse.results)
+		})
+
+		console.log($localStorage.foodmodel.products);
 	};
 
 });
