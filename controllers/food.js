@@ -52,9 +52,8 @@ angular
 	$scope.apiResponse = null;
 
 	$scope.estimate = function estimate() {
-		//localStorage.clear();
-		//localStorage.removeItem("google_state");
-		//localStorage.removeItem("satellizer_token");
+		localStorage.removeItem("google_state");
+		localStorage.removeItem("satellizer_token");
 		estimate.error = null;
 		$scope.apiResponse = null;
 		nixApi.natural($scope.data)
