@@ -27,7 +27,7 @@
                 <tr ng-repeat="estimation in apiResponse.results">
                     <td ng-repeat="column in columns">
                         {{column.valueField ? getProperty(estimation, column.valueField) : column.getValue(estimation)}}
-                        <button class="btn btn-success pull-right" ng-if="column.header == 'NDB number'" ng-click="addToFoodLog()">Add to food log</button>
+                        <button class="btn btn-success pull-right" ng-if="column.header == 'NDB number'" ng-click="addToFoodLog(estimation)">Add to food log</button>
                     </td>
                 </tr>
                 </tbody>
