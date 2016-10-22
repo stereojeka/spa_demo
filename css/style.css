@@ -71,3 +71,5 @@ button.fa-auth {
     width: 800px;
 	border:10px solid #eaeaea;	
 }
+
+#map { height: 100%; }
