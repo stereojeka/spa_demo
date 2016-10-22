@@ -80,7 +80,7 @@ angular
 	};
 
 	$scope.addToFoodLog = function() {
-		$localStorage.products = $scope.columns;
+		$localStorage.products = $scope.apiResponse;
 		console.log($localStorage.products);
 	};
 
