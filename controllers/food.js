@@ -81,10 +81,10 @@ angular
 	$scope.addToFoodLog = function(index) {
 		$localStorage.foodmodel = foodmodel;
 		$localStorage.response = $scope.apiResponse;
-
+		console.log($localStorage.response);
 		$localStorage.foodmodel.products.push({
 			food: $localStorage.response.results[index].parsed_query.food,
-			Energy: getValue($scope.apiResponse.results)
+			Energy: '228'
 		})
 
 		console.log($localStorage.foodmodel.products);
