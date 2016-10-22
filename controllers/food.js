@@ -94,7 +94,7 @@ angular
 		console.log($localStorage.response);
 		$localStorage.foodmodel.products.push({
 			food: $localStorage.response.results[index].parsed_query.food,
-			Energy: getValue($localStorage.response.results[index])
+			Energy: $scope.getValue($localStorage.response.results[index])
 		})
 		console.log($localStorage.foodmodel.products);
 	};
