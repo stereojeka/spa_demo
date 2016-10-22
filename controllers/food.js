@@ -82,8 +82,8 @@ angular
 	$scope.addToFoodLog = function(index) {
 		$localStorage.products = $scope.apiResponse;
 		console.log(index);
-		//console.log($localStorage.products);
-		//console.log($localStorage.products.results[index].parsed_query.food);
+		console.log($localStorage.products);
+		console.log($localStorage.products.results[index].parsed_query.food);
 	};
 
 });
