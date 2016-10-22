@@ -1,5 +1,5 @@
 var foodmodel = { 
-	products: [{ food: 'water', Energy: '0.00 kcal' }]
+	products: []
 };
 
 angular

@@ -22,8 +22,8 @@
 				</thead>
 				<tbody>
 					<tr ng-repeat="product in foodmodel.products">
-						<td>food: {{ product.food }}</td>
-						<td>Energy: {{ product.Energy }}</td>
+						<td> {{ product.food }} </td>
+						<td> {{ product.Energy }} </td>
 						<td><button class="btn btn-default pull-right" ng-click="deleteFood($index)">Удалить</button></td>
 					</tr> 
 				</tbody>
