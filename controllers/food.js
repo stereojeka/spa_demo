@@ -79,10 +79,10 @@ angular
 		return current;
 	};
 
-	$scope.addToFoodLog = function(estimation) {
+	$scope.addToFoodLog = function(index) {
 		$localStorage.products = $scope.apiResponse;
-		console.log($localStorage.products.results[0].parsed_query.food);
-		console.log($localStorage.products.results[estimation].parsed_query.food);
+		console.log($localStorage.products);
+		console.log($localStorage.products.results[index].parsed_query.food);
 	};
 
 });
