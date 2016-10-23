@@ -4,4 +4,8 @@ angular
 
 	Account.initMap();
 
+	$scope.searchFood = function() {
+		Account.requestSearsh();
+	}
+
 });
