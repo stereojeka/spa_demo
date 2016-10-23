@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdXwfZB8dbfL2qxIZ9IbJJY-WuQfZaeIY&callback=initMap">
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAdXwfZB8dbfL2qxIZ9IbJJY-WuQfZaeIY&callback=initMap">
 	</script>
 	<script type="text/javascript">
 		if (navigator.geolocation) {
@@ -53,12 +53,11 @@
 		</ul>
 	</div>
 	<div ui-view></div>
+	
 
-	<div class="container" ng-controller="gmapController">
-		<div id="wrap" ng-show="goMap">
-			<h2>Your current location</h2>
-			<div id="mapContainer"></div>
-		</div>
+	<div id="wrap">
+		<h2>HTML5 Geolocation и Google Maps</h2>
+		<div id="mapContainer"></div>
 	</div>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
