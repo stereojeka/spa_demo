@@ -1,11 +1,11 @@
 angular
 .module('mainApp')
-.controller('gmapController', function($scope, $http) {
+.controller('gmapController', function($scope, $localStorage) {
 
-	$scope.goMap = false;
+	$localStorage.goMap = false;
 
 	$scope.showhideMap = function(){
-		$scope.goMap = !$scope.goMap;
+		$localStorage.goMap = !$localStorage.goMap;
 	}
 
 	
