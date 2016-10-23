@@ -20,7 +20,7 @@ angular
 						},
 						mapTypeId: google.maps.MapTypeId.ROADMAP
 					};
-					map = new google.maps.Map(
+					var map = new google.maps.Map(
 						document.getElementById("mapContainer"), mapOptions
 						);
 					var marker = new google.maps.Marker({
@@ -31,29 +31,28 @@ angular
 
 					var request = {
 						location: coords,
-						radius: '4000',
+						radius: '500',
 						types: ['store']
 					};
+
 					var service = new google.maps.places.PlacesService(map);
 					service.nearbySearch(request, function(results, status) {
 						if (status == google.maps.places.PlacesServiceStatus.OK) {
 							for (var i = 0; i < results.length; i++) {
 								var place = results[i];
-								var marker = new google.maps.Marker({
-									map: map,
-									position: place.geometry.location
-								});
-							}
+					        
+					        	var marker = new google.maps.Marker({
+					        		map: map,
+					        		position: place.geometry.location
+					        	});
+					    	}
 						}
 					});
+
 				});
 			}else {
 				alert("Geolocation API не поддерживается в вашем браузере");
 			}
-		},
-		requestSearsh: function(){
-			// Run the initialize function when the window has finished loading.
-			google.maps.event.addDomListener(window, 'load', initMap);
-		}	
+		}
 	}
 });
