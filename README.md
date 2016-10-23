@@ -26,7 +26,7 @@ For using this application you should:
   
  3.In "app.js" file change "clientId" and "redirectUri" to your values
  4. Visit https://developers.google.com/maps/documentation/javascript/?hl=ru to get your own API key
- 5. Insert "<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
-    async defer></script>" into "index.html" with your "YOUR_API_KEY"
+ 5. Insert `<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+    async defer></script>` into "index.html" with your "YOUR_API_KEY"
  6. Enjoy!   
  
