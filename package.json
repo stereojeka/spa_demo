@@ -18,5 +18,14 @@
   "bugs": {
     "url": "https://github.com/stereojeka/spa_demo/issues"
   },
-  "homepage": "https://github.com/stereojeka/spa_demo#readme"
+  "homepage": "https://github.com/stereojeka/spa_demo#readme",
+  "devDependencies": {
+    "angular": "^1.5.8",
+    "bootstrap": "3.3.1",
+    "ngstorage": "0.3.6",
+    "angular-nutritionix-api": "1.0.1",
+    "satellizer": "^0.15.5",
+    "angular-ui-router": "0.3.1",
+    "angular-resource": "1.4.7"
+  }
 }

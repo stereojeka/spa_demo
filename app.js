@@ -68,25 +68,6 @@
 		});
 		$urlRouterProvider.otherwise('/home');
 
-		// Facebook
-		/*
-		$authProvider.facebook({
-			clientId: '1336322916420295',
-			responseType: 'token',
-			name: 'facebook',
-			url: '/auth/facebook',
-			authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-			redirectUri: window.location.origin + '/spa_demo/',
-			requiredUrlParams: ['display', 'scope'],
-			scope: ['email'],
-			scopeDelimiter: ',',
-			display: 'popup',
-			oauthType: '2.0',
-			popupOptions: { width: 580, height: 400 }
-		});
-		*/
-
-		// Google
 		$authProvider.google({
 			clientId: '877900933221-t16rni758d1f9blqamfppeeqm1t4abo2.apps.googleusercontent.com',
 			responseType: 'token',

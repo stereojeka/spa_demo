@@ -26,7 +26,6 @@ angular
 			if (estimation.nutrients) {
 				result = $filter('nutrient')(estimation.nutrients, 208);
 				if (result) {
-					//console.log($filter('number')(result.value, 2).toString() + ' ' + result.unit);
 					return $filter('number')(result.value, 2).toString() + ' ' + result.unit;
 				}
 			}
@@ -91,12 +90,10 @@ angular
 	$scope.addToFoodLog = function(index) {
 		$localStorage.foodmodel = foodmodel;
 		$localStorage.response = $scope.apiResponse;
-		console.log($localStorage.response);
 		$localStorage.foodmodel.products.push({
 			food: $localStorage.response.results[index].parsed_query.food,
 			Energy: $scope.getValue($localStorage.response.results[index])
 		});
-		console.log($localStorage.foodmodel.products);
 	};
 
 	$scope.deleteFood = function(index){

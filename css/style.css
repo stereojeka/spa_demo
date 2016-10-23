@@ -41,22 +41,13 @@ button.fa-auth {
 	background-color: #294786;
 }
 
-.goHide {
-	display: none;
-}
-
 .google-auth {
 	background-color: #dd4b39;
 	color: #fff;
 }
 
-.tw-auth {
-	background-color: #0090c7;
-	color: #fff;
-}
-
-.git-auth {
-	background: #444 !important;
+.google-auth:hover {
+	background-color: #dd4b39;
 	color: #fff !important;
 }
 

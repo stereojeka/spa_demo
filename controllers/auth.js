@@ -9,7 +9,6 @@ angular
 			$localStorage.loggedIn = true;
 			$localStorage.accessToken = $auth.getToken();
 			$location.path('/editprofile');
-			console.log($localStorage.accessToken);
 			console.log($auth.isAuthenticated());
 		})
 		.catch(function(error) {
