@@ -29,7 +29,7 @@ angular
 						title: "Your current location!",
 						icon: {
 							path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
-							scale: 10
+							scale: 7
 						}
 					});
 
@@ -44,10 +44,11 @@ angular
 						if (status == google.maps.places.PlacesServiceStatus.OK) {
 							for (var i = 0; i < results.length; i++) {
 								var place = results[i];
-								
+
 								var marker = new google.maps.Marker({
 									map: map,
-									position: place.geometry.location
+									position: place.geometry.location,
+									title: "Places where you can visit"
 								});
 							}
 						}
