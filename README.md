@@ -5,7 +5,9 @@ This application includes:
  - Usefull search food, creating and editing your own FoodLog using [Nutrionix API](https://developer.nutritionix.com/)
  - Possibility to determine your location via the app and search for the restaurants in a radius of 4 km from your position using [Google Map API](https://developers.google.com/maps/documentation/javascript/?hl=ru)
 
-# If you dont want to waste time just visit this app on GitHub Pages: https://stereojeka.github.io/spa_demo/
+
+If you dont want to waste time just visit this app on GitHub Pages: https://stereojeka.github.io/spa_demo/
+
 
 For using this application you should:
  1. Clone this repository to your workplace
@@ -22,7 +24,9 @@ For using this application you should:
 
     **Note:** Make sure you have turned on **Contacts API** and **Google+ API** in the *APIs* tab.
   
- 3. In "app.js" file change "clientId" and "redirectUri" to your values
- 4. Visit https://developers.google.com/maps/documentation/javascript/?hl=ru to get your owb API key
- 5. Insert API key with <script> in "index.html" 
+ 3.In "app.js" file change "clientId" and "redirectUri" to your values
+ 4. Visit https://developers.google.com/maps/documentation/javascript/?hl=ru to get your own API key
+ 5. Insert "<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"
+    async defer></script>" into "index.html" with your "YOUR_API_KEY"
+ 6. Enjoy!   
  
