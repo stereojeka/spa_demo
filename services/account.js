@@ -48,7 +48,7 @@ angular
 								var marker = new google.maps.Marker({
 									map: map,
 									position: place.geometry.location,
-									title: "Places where you can visit"
+									title: "Places where you can visit!"
 								});
 							}
 						}
