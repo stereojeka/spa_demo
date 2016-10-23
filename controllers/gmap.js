@@ -5,7 +5,7 @@ angular
 	$scope.goMap = false;
 
 	$scope.showhideMap = function(){
-		return !$scope.goMap;
+		$scope.goMap = !$scope.goMap;
 	}
 
 	
