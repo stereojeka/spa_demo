@@ -23,10 +23,14 @@ angular
 					var map = new google.maps.Map(
 						document.getElementById("mapContainer"), mapOptions
 						);
-					var marker = new google.maps.Marker({
+					var markerLocation = new google.maps.Marker({
 						position: coords,
 						map: map,
-						title: "Your current location!"
+						title: "Your current location!",
+						icon: {
+							path: google.maps.SymbolPath.BACKWARD_CLOSED_ARROW,
+							scale: 10
+						}
 					});
 
 					var request = {
@@ -40,12 +44,12 @@ angular
 						if (status == google.maps.places.PlacesServiceStatus.OK) {
 							for (var i = 0; i < results.length; i++) {
 								var place = results[i];
-					        
-					        	var marker = new google.maps.Marker({
-					        		map: map,
-					        		position: place.geometry.location
-					        	});
-					    	}
+								
+								var marker = new google.maps.Marker({
+									map: map,
+									position: place.geometry.location
+								});
+							}
 						}
 					});
 
