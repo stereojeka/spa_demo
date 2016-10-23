@@ -31,8 +31,8 @@ angular
 
 					var request = {
 						location: coords,
-						radius: '500',
-						types: ['store']
+						radius: '4000',
+						types: ['restaurant']
 					};
 
 					var service = new google.maps.places.PlacesService(map);
