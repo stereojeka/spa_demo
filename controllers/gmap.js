@@ -4,4 +4,10 @@ angular
 
 	$scope.goMap = false;
 
+	$scope.showhideMap = function(){
+		return !$scope.goMap;
+	}
+
+	
+
 });
