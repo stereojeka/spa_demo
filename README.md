@@ -6,7 +6,7 @@ This application includes:
  - Possibility to determine your location via the app and search for the restaurants in a radius of 4 km from your position using [Google Map API](https://developers.google.com/maps/documentation/javascript/?hl=ru)
 
 
-## If you dont want to waste time just visit this app on GitHub Pages: https://stereojeka.github.io/spa_demo/
+# You can visit this app on GitHub Pages: https://stereojeka.github.io/spa_demo/
 
 
 For using this application you should:
